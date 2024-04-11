@@ -7,8 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C60B572A2BC1519C006DD219 /* CodeHighlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60B57292BC1519C006DD219 /* CodeHighlighter.swift */; };
+		C60B572D2BC15E0F006DD219 /* SwiftBasicFormat in Frameworks */ = {isa = PBXBuildFile; productRef = C60B572C2BC15E0F006DD219 /* SwiftBasicFormat */; };
+		C60B572F2BC15E0F006DD219 /* SwiftIDEUtils in Frameworks */ = {isa = PBXBuildFile; productRef = C60B572E2BC15E0F006DD219 /* SwiftIDEUtils */; };
+		C60B57322BC15E3D006DD219 /* Pow in Frameworks */ = {isa = PBXBuildFile; productRef = C60B57312BC15E3D006DD219 /* Pow */; };
+		C60B57342BC15F0E006DD219 /* SwiftParser in Frameworks */ = {isa = PBXBuildFile; productRef = C60B57332BC15F0E006DD219 /* SwiftParser */; };
+		C60B57362BC15F0E006DD219 /* SwiftSyntax in Frameworks */ = {isa = PBXBuildFile; productRef = C60B57352BC15F0E006DD219 /* SwiftSyntax */; };
+		C60B57392BC160B8006DD219 /* HighlightSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C60B57382BC160B8006DD219 /* HighlightSwift */; };
 		C63FB3B42BB87B62002C22D6 /* TypeSlideApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63FB3B32BB87B62002C22D6 /* TypeSlideApp.swift */; };
-		C63FB3B62BB87B62002C22D6 /* TitleSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63FB3B52BB87B62002C22D6 /* TitleSlide.swift */; };
+		C63FB3B62BB87B62002C22D6 /* TitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63FB3B52BB87B62002C22D6 /* TitleText.swift */; };
 		C63FB3B82BB87B63002C22D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C63FB3B72BB87B63002C22D6 /* Assets.xcassets */; };
 		C63FB3BB2BB87B63002C22D6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C63FB3BA2BB87B63002C22D6 /* Preview Assets.xcassets */; };
 		C63FB3C62BB87B63002C22D6 /* TypeSlideTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63FB3C52BB87B63002C22D6 /* TypeSlideTests.swift */; };
@@ -39,9 +46,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C60B57292BC1519C006DD219 /* CodeHighlighter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeHighlighter.swift; sourceTree = "<group>"; };
 		C63FB3B02BB87B62002C22D6 /* TypeSlide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TypeSlide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C63FB3B32BB87B62002C22D6 /* TypeSlideApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeSlideApp.swift; sourceTree = "<group>"; };
-		C63FB3B52BB87B62002C22D6 /* TitleSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSlide.swift; sourceTree = "<group>"; };
+		C63FB3B52BB87B62002C22D6 /* TitleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleText.swift; sourceTree = "<group>"; };
 		C63FB3B72BB87B63002C22D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C63FB3BA2BB87B63002C22D6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C63FB3BC2BB87B63002C22D6 /* TypeSlide.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TypeSlide.entitlements; sourceTree = "<group>"; };
@@ -62,6 +70,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C60B57322BC15E3D006DD219 /* Pow in Frameworks */,
+				C60B57342BC15F0E006DD219 /* SwiftParser in Frameworks */,
+				C60B57362BC15F0E006DD219 /* SwiftSyntax in Frameworks */,
+				C60B57392BC160B8006DD219 /* HighlightSwift in Frameworks */,
+				C60B572D2BC15E0F006DD219 /* SwiftBasicFormat in Frameworks */,
+				C60B572F2BC15E0F006DD219 /* SwiftIDEUtils in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +125,7 @@
 				C63FB3BC2BB87B63002C22D6 /* TypeSlide.entitlements */,
 				C63FB3B92BB87B63002C22D6 /* Preview Content */,
 				C63FB3DE2BB9A907002C22D6 /* DesignProps.swift */,
+				C60B57292BC1519C006DD219 /* CodeHighlighter.swift */,
 			);
 			path = TypeSlide;
 			sourceTree = "<group>";
@@ -146,7 +161,7 @@
 				C6A15AA22BBC205400371F19 /* SlideView.swift */,
 				C6A15AA42BBC263300371F19 /* BulletsSlide.swift */,
 				C6A15AA62BBC2DFA00371F19 /* StatementSlide.swift */,
-				C63FB3B52BB87B62002C22D6 /* TitleSlide.swift */,
+				C63FB3B52BB87B62002C22D6 /* TitleText.swift */,
 				C6A15AA92BBC2F9500371F19 /* TitleSubtitle.swift */,
 			);
 			path = SlideLayout;
@@ -168,6 +183,14 @@
 			dependencies = (
 			);
 			name = TypeSlide;
+			packageProductDependencies = (
+				C60B572C2BC15E0F006DD219 /* SwiftBasicFormat */,
+				C60B572E2BC15E0F006DD219 /* SwiftIDEUtils */,
+				C60B57312BC15E3D006DD219 /* Pow */,
+				C60B57332BC15F0E006DD219 /* SwiftParser */,
+				C60B57352BC15F0E006DD219 /* SwiftSyntax */,
+				C60B57382BC160B8006DD219 /* HighlightSwift */,
+			);
 			productName = TypeSlide;
 			productReference = C63FB3B02BB87B62002C22D6 /* TypeSlide.app */;
 			productType = "com.apple.product-type.application";
@@ -240,6 +263,11 @@
 				Base,
 			);
 			mainGroup = C63FB3A72BB87B62002C22D6;
+			packageReferences = (
+				C60B572B2BC15E0F006DD219 /* XCRemoteSwiftPackageReference "swift-syntax" */,
+				C60B57302BC15E3D006DD219 /* XCRemoteSwiftPackageReference "Pow" */,
+				C60B57372BC160B8006DD219 /* XCRemoteSwiftPackageReference "HighlightSwift" */,
+			);
 			productRefGroup = C63FB3B12BB87B62002C22D6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -282,11 +310,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C63FB3B62BB87B62002C22D6 /* TitleSlide.swift in Sources */,
+				C63FB3B62BB87B62002C22D6 /* TitleText.swift in Sources */,
 				C6A15AA72BBC2DFA00371F19 /* StatementSlide.swift in Sources */,
 				C6A15AAA2BBC2F9500371F19 /* TitleSubtitle.swift in Sources */,
 				C63FB3DF2BB9A907002C22D6 /* DesignProps.swift in Sources */,
 				C6A15AA32BBC205400371F19 /* SlideView.swift in Sources */,
+				C60B572A2BC1519C006DD219 /* CodeHighlighter.swift in Sources */,
 				C6A15AA52BBC263300371F19 /* BulletsSlide.swift in Sources */,
 				C63FB3B42BB87B62002C22D6 /* TypeSlideApp.swift in Sources */,
 			);
@@ -448,6 +477,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = TypeSlide/TypeSlide.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -477,6 +507,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = TypeSlide/TypeSlide.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -613,6 +644,66 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C60B572B2BC15E0F006DD219 /* XCRemoteSwiftPackageReference "swift-syntax" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-syntax.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 510.0.1;
+			};
+		};
+		C60B57302BC15E3D006DD219 /* XCRemoteSwiftPackageReference "Pow" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/EmergeTools/Pow";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.3;
+			};
+		};
+		C60B57372BC160B8006DD219 /* XCRemoteSwiftPackageReference "HighlightSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/appstefan/HighlightSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.7;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C60B572C2BC15E0F006DD219 /* SwiftBasicFormat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C60B572B2BC15E0F006DD219 /* XCRemoteSwiftPackageReference "swift-syntax" */;
+			productName = SwiftBasicFormat;
+		};
+		C60B572E2BC15E0F006DD219 /* SwiftIDEUtils */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C60B572B2BC15E0F006DD219 /* XCRemoteSwiftPackageReference "swift-syntax" */;
+			productName = SwiftIDEUtils;
+		};
+		C60B57312BC15E3D006DD219 /* Pow */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C60B57302BC15E3D006DD219 /* XCRemoteSwiftPackageReference "Pow" */;
+			productName = Pow;
+		};
+		C60B57332BC15F0E006DD219 /* SwiftParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C60B572B2BC15E0F006DD219 /* XCRemoteSwiftPackageReference "swift-syntax" */;
+			productName = SwiftParser;
+		};
+		C60B57352BC15F0E006DD219 /* SwiftSyntax */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C60B572B2BC15E0F006DD219 /* XCRemoteSwiftPackageReference "swift-syntax" */;
+			productName = SwiftSyntax;
+		};
+		C60B57382BC160B8006DD219 /* HighlightSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C60B57372BC160B8006DD219 /* XCRemoteSwiftPackageReference "HighlightSwift" */;
+			productName = HighlightSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C63FB3A82BB87B62002C22D6 /* Project object */;
 }

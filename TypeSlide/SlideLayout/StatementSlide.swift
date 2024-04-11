@@ -14,7 +14,7 @@ struct StatementSlide: View {
 		VStack {
 			Spacer()
 			Text(statement)
-				.scalableFont(.title)
+				.fontStyle(.title)
 				.colorInvert()
 				.fontWeight(.semibold)
 				.multilineTextAlignment(.center)
@@ -22,6 +22,5 @@ struct StatementSlide: View {
 			Spacer()
 		}
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
-		.background(Color.white)
 	}
 }

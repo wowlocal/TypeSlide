@@ -7,6 +7,29 @@
 
 import SwiftUI
 
+class DebugState: ObservableObject {
+    @Published var isEnabled: Bool = false
+}
+
+struct DebugEnvironmentKey: EnvironmentKey {
+	static let defaultValue: Bool = false // Default value for the debug variable
+}
+
+extension EnvironmentValues {
+	var debug: Bool {
+		get { self[DebugEnvironmentKey.self] }
+		set { self[DebugEnvironmentKey.self] = newValue }
+	}
+}
+
+struct BGColor: PreferenceKey {
+	static var defaultValue: Color = .white // Default color
+
+	static func reduce(value: inout Color, nextValue: () -> Color) {
+		value = nextValue()
+	}
+}
+
 struct SlideView<Content: View>: View {
 	let content: Content
 
@@ -15,6 +38,8 @@ struct SlideView<Content: View>: View {
 	}
 
 	private let aspectRatio: CGFloat = 16 / 9 // 4 / 3
+
+	// @StateObject var debugState = DebugState()
 
 	private let minWidth: CGFloat = 500
 	private var minHeight: CGFloat {
@@ -39,32 +64,45 @@ struct SlideView<Content: View>: View {
 		return (frameWidth, frameHeight)
 	}
 
-	@State var scaleFactor: CGFloat = 1.0
-	var padding: CGFloat {
-		50 * scaleFactor
+	@State var debug: Bool = false
+
+	@ViewBuilder
+	var debugButton: some View {
+		Button(action: {
+			debug.toggle()
+		}) {
+			Text("Toggle Button")
+		}
+		.frame(width: 0, height: 0)
+		.opacity(0)
+		.keyboardShortcut(KeyEquivalent("d"), modifiers: [.command])
 	}
+
+	@State var backgroundColor: Color = .white
 
 	var body: some View {
 		GeometryReader { geometry in
 			let farmeSize: (width: CGFloat, height: CGFloat) = slideFrame(geometry.size)
 			ZStack {
-				Color.white // Slide background color
+				debugButton
+				backgroundColor //debug ? Color.gray : Color.white // Slide background color
 				content
-					.background(Color.clear)
-					.padding(padding)
-			}
-			.onAppear {
-				scaleFactor = farmeSize.width / 2000
-			}
-			.onChange(of: geometry.size) {
-				scaleFactor = farmeSize.width / 2000
+					.padding(80)
+					.frame(width: 1920, height: 1080)
+					//.background(backgroundColor)
+					.scaleEffect(farmeSize.width / 1920)
+					.environment(\.debug, debug)
+					//.environmentObject(debugState)
 			}
 			.frame(width: farmeSize.width, height: farmeSize.height)
 			.cornerRadius(AppSizes.cornerRadius)
 			.shadow(radius: 5)
 			// Ensures the slide maintains its aspect ratio and is centered
 			.position(x: geometry.size.width / 2, y: geometry.size.height / 2)
-			.environment(\.scaleFactor, farmeSize.width / 2000)
-		}.shadow(radius: 0.01)
+			.onPreferenceChange(BGColor.self) {
+				backgroundColor = $0
+			}
+		}
+		.shadow(radius: 0.01)
 	}
 }

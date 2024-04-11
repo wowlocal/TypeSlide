@@ -9,6 +9,9 @@ import Foundation
 import SwiftUI
 
 struct AppSizes {
+	static let superTitleFont: CGFloat = 188
+	static let superSubtitleFont: CGFloat = 122
+
 	static let statementFont: CGFloat = 116
 	static let titleFont: CGFloat = 85
 	static let subtitleFont: CGFloat = 55
@@ -36,7 +39,7 @@ struct AppFontWeights {
 }
 
 struct AppFont {
-	let size: CGFloat
+	var size: CGFloat
 	let weight: Font.Weight
 	let design: Font.Design
 
@@ -48,64 +51,62 @@ struct AppFont {
 
 	// Title font
 	static var title: AppFont {
-		AppFont(size: AppSizes.titleFont, 
+		AppFont(size: AppSizes.titleFont,
 				weight: AppFontWeights.titleWeight,
 				design: AppFontDesigns.titleDesign)
 	}
 
+	static var superTitle: AppFont {
+		AppFont(size: AppSizes.superTitleFont,
+				weight: .heavy,
+				design: AppFontDesigns.titleDesign)
+	}
+
+	static var superSubtitle: AppFont {
+		AppFont(size: AppSizes.superSubtitleFont,
+				weight: .bold,
+				design: AppFontDesigns.defaultDesign)
+	}
+
 	// Subtitle font
 	static var subtitle: AppFont {
-		AppFont(size: AppSizes.subtitleFont, 
+		AppFont(size: AppSizes.subtitleFont,
 				weight: AppFontWeights.subtitleWeight,
 				design: AppFontDesigns.defaultDesign)
 	}
 
 	// Body font
 	static var body: AppFont {
-		AppFont(size: AppSizes.bodyFont, 
+		AppFont(size: AppSizes.bodyFont,
 				weight: AppFontWeights.bodyWeight,
 				design: AppFontDesigns.bodyDesign)
 	}
 
 	// Caption font
 	static var caption: AppFont {
-		AppFont(size: AppSizes.captionFont, 
+		AppFont(size: AppSizes.captionFont,
 				weight: AppFontWeights.captionWeight,
 				design: AppFontDesigns.defaultDesign)
 	}
 }
 
 extension View {
-	func scalableFont(_ font: AppFont) -> some View {
-		self.modifier(ScalableFontModifier(font: font))
+	func fontStyle(_ font: AppFont) -> some View {
+		self.modifier(FontModifier(font: font))
 	}
 }
 
-struct ScalableFontModifier: ViewModifier {
+struct FontModifier: ViewModifier {
 	var font: AppFont
-
-	@Environment(\.scaleFactor) var scaleFactor: CGFloat
+	// TODO: monitor environment style
 
 	func body(content: Content) -> some View {
 		content.font(
-			.system(size: font.size * scaleFactor, weight: font.weight, design: font.design)
+			.system(size: font.size, weight: font.weight, design: font.design)
 		)
 	}
 }
 
-struct ScalablePaddingModifier: ViewModifier {
-	@Environment(\.scaleFactor) var scaleFactor: CGFloat
-
-	var edges: Edge.Set = .all
-	var length: CGFloat? = nil
-
-	func body(content: Content) -> some View {
-		content.padding(edges, length ?? 20 * scaleFactor)
-	}
-}
-
-extension View {
-	func scalablePadding(_ edges: Edge.Set = .all, _ length: CGFloat? = nil) -> some View {
-		self.modifier(ScalablePaddingModifier(edges: edges, length: length))
-	}
+struct C {
+	static let deepPurple: Color = Color(.displayP3, red: 120/255, green: 24/255, blue: 245/255)
 }
