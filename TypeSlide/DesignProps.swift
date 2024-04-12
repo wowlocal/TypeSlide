@@ -56,15 +56,27 @@ struct AppFont {
 				design: AppFontDesigns.titleDesign)
 	}
 
-	static var superTitle: AppFont {
-		AppFont(size: AppSizes.superTitleFont,
+	static var ultraTitle: AppFont {
+		AppFont(size: 190,
 				weight: .heavy,
-				design: AppFontDesigns.titleDesign)
+				design: .rounded)
+	}
+
+	static var superTitle: AppFont {
+		AppFont(size: 160,
+				weight: .heavy,
+				design: .default)
 	}
 
 	static var superSubtitle: AppFont {
-		AppFont(size: AppSizes.superSubtitleFont,
+		AppFont(size: 100,
 				weight: .bold,
+				design: AppFontDesigns.defaultDesign)
+	}
+
+	static var modernSubtitle: AppFont {
+		AppFont(size: 80,
+				weight: AppFontWeights.subtitleWeight,
 				design: AppFontDesigns.defaultDesign)
 	}
 

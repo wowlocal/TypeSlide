@@ -26,6 +26,7 @@
 		C6A15AA52BBC263300371F19 /* BulletsSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A15AA42BBC263300371F19 /* BulletsSlide.swift */; };
 		C6A15AA72BBC2DFA00371F19 /* StatementSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A15AA62BBC2DFA00371F19 /* StatementSlide.swift */; };
 		C6A15AAA2BBC2F9500371F19 /* TitleSubtitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A15AA92BBC2F9500371F19 /* TitleSubtitle.swift */; };
+		C6BDB9862BC9D0E600C52249 /* SectionStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BDB9852BC9D0E600C52249 /* SectionStart.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		C6A15AA42BBC263300371F19 /* BulletsSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletsSlide.swift; sourceTree = "<group>"; };
 		C6A15AA62BBC2DFA00371F19 /* StatementSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatementSlide.swift; sourceTree = "<group>"; };
 		C6A15AA92BBC2F9500371F19 /* TitleSubtitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSubtitle.swift; sourceTree = "<group>"; };
+		C6BDB9852BC9D0E600C52249 /* SectionStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionStart.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 				C6A15AA62BBC2DFA00371F19 /* StatementSlide.swift */,
 				C63FB3B52BB87B62002C22D6 /* TitleText.swift */,
 				C6A15AA92BBC2F9500371F19 /* TitleSubtitle.swift */,
+				C6BDB9852BC9D0E600C52249 /* SectionStart.swift */,
 			);
 			path = SlideLayout;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				C6A15AA72BBC2DFA00371F19 /* StatementSlide.swift in Sources */,
 				C6A15AAA2BBC2F9500371F19 /* TitleSubtitle.swift in Sources */,
 				C63FB3DF2BB9A907002C22D6 /* DesignProps.swift in Sources */,
+				C6BDB9862BC9D0E600C52249 /* SectionStart.swift in Sources */,
 				C6A15AA32BBC205400371F19 /* SlideView.swift in Sources */,
 				C60B572A2BC1519C006DD219 /* CodeHighlighter.swift in Sources */,
 				C6A15AA52BBC263300371F19 /* BulletsSlide.swift in Sources */,

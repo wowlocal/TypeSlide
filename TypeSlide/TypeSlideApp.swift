@@ -31,7 +31,7 @@ struct PrewviewView: View {
 }
 
 enum SlideType {
-	case title(String)
+	case title(String, subtitle: String)
 	case statement(String)
 	case titleSubtitle(title: String, subtitle: String = "")
 	case bullets(title: String, bullets: [String])
@@ -89,9 +89,9 @@ class PresentationManager: ObservableObject {
 
 struct Presentation: View {
 	@StateObject var presentationManager = PresentationManager([
-		.titleSubtitle(title: "Hello"),
 		.titleSubtitle(title: "Hello", subtitle: "World"),
-		.title("Foo"),
+		.titleSubtitle(title: "Hello"),
+		.title("FAST LOVE", subtitle: "iA Presenter in three minutes"),
 		.bullets(title: "Foo", bullets: ["1", "2"]),
 		.statement("statement"),
 	])
@@ -114,8 +114,8 @@ struct Presentation: View {
 		switch presentationManager.currentSlide {
 		case .bullets(let title, let bullets):
 			bulletsSlide(title, bullets)
-		case .title(let title):
-			TitleText(title: title, animation: animation)
+		case .title(let title, let subtitle):
+			TitleSlide(title: title, subtitle: subtitle)
 		case .statement(let title):
 			TitleText(title: title, animation: animation)
 		case .titleSubtitle(let title, let subtitle):
@@ -235,15 +235,21 @@ struct TypeSlideApp: App {
 					""")
 			}*/
 			Presentation()
-				.padding([.top, .bottom], 30)
+				//.padding([.top, .bottom], 30)
 				.ignoresSafeArea(.all)
 				.frame(minWidth: 500, maxWidth: .infinity, minHeight: 500 / (16 / 9), maxHeight: .infinity)
 				.background(TransparentWindow().ignoresSafeArea(.all))
+				.onAppear {
+					for window in NSApplication.shared.windows {
+						window.standardWindowButton(.closeButton)?.isHidden = true
+						window.standardWindowButton(.miniaturizeButton)?.isHidden = true
+						window.standardWindowButton(.zoomButton)?.isHidden = true
+					}
+				}
         }
 		.windowStyle(HiddenTitleBarWindowStyle())
 		.windowToolbarStyle(UnifiedCompactWindowToolbarStyle())
 		.windowResizability(.contentSize)
-
     }
 }
 
