@@ -89,17 +89,26 @@ class PresentationManager: ObservableObject {
 
 struct Presentation: View {
 	@StateObject var presentationManager = PresentationManager([
+		.bullets(title: "Bullet lists",
+				 bullets: [
+					"Increase cognitive load",
+					"Look and feel robotic",
+					"Are distracting",
+					"Bore the hell out of everyone",
+					"Make you predictable",
+					"Sound and look like notes",
+					"Should be notes"
+				 ]),
 		.titleSubtitle(title: "Hello", subtitle: "World"),
 		.titleSubtitle(title: "Hello"),
 		.title("FAST LOVE", subtitle: "iA Presenter in three minutes"),
-		.bullets(title: "Foo", bullets: ["1", "2"]),
 		.statement("statement"),
 	])
 
 	@Namespace var animation
 
-	func bulletsSlide(_ title: String, _ bullets: [String]) -> TitleAndBullets {
-		let bullets = TitleAndBullets(
+	func bulletsSlide(_ title: String, _ bullets: [String]) -> TitleAndBulletsModern {
+		let bullets = TitleAndBulletsModern(
 			substep: $presentationManager.substep,
 			animation: animation,
 			title: title,

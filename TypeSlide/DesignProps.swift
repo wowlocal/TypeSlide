@@ -62,6 +62,12 @@ struct AppFont {
 				design: .rounded)
 	}
 
+	static var modernTitle: AppFont {
+		AppFont(size: 90,
+				weight: .bold,
+				design: .default)
+	}
+
 	static var superTitle: AppFont {
 		AppFont(size: 160,
 				weight: .heavy,
@@ -80,21 +86,24 @@ struct AppFont {
 				design: AppFontDesigns.defaultDesign)
 	}
 
-	// Subtitle font
 	static var subtitle: AppFont {
 		AppFont(size: AppSizes.subtitleFont,
 				weight: AppFontWeights.subtitleWeight,
 				design: AppFontDesigns.defaultDesign)
 	}
 
-	// Body font
+	static var bullet: AppFont {
+		AppFont(size: 62,
+				weight: .regular,
+				design: .monospaced)
+	}
+
 	static var body: AppFont {
 		AppFont(size: AppSizes.bodyFont,
 				weight: AppFontWeights.bodyWeight,
 				design: AppFontDesigns.bodyDesign)
 	}
 
-	// Caption font
 	static var caption: AppFont {
 		AppFont(size: AppSizes.captionFont,
 				weight: AppFontWeights.captionWeight,
