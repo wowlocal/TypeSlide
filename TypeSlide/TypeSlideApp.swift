@@ -33,7 +33,7 @@ struct PrewviewView: View {
 enum SlideType {
 	case title(String)
 	case statement(String)
-	case titleSubtitle(title: String, subtitle: String)
+	case titleSubtitle(title: String, subtitle: String = "")
 	case bullets(title: String, bullets: [String])
 }
 
@@ -89,6 +89,7 @@ class PresentationManager: ObservableObject {
 
 struct Presentation: View {
 	@StateObject var presentationManager = PresentationManager([
+		.titleSubtitle(title: "Hello"),
 		.titleSubtitle(title: "Hello", subtitle: "World"),
 		.title("Foo"),
 		.bullets(title: "Foo", bullets: ["1", "2"]),

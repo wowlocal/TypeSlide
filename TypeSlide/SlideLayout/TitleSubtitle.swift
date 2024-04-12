@@ -28,7 +28,7 @@ struct TitleSubtitleClassic: View {
 }
 
 struct TitleSubtitleModern: View {
-	var title: String
+	var title: String // будет анимироваться между инстансами TitleSubtitleModern т.к. общая structural identity
 	var subtitle: String
 
 	// @EnvironmentObject var debug: DebugState
@@ -45,6 +45,7 @@ struct TitleSubtitleModern: View {
 			Text(title)
 				.foregroundColor(.white)
 				.fontStyle(.superTitle)
+				//.id("1") // если id идентичный то анимация будет даже с разным текстом
 		}
 		.background(
 			Group {
