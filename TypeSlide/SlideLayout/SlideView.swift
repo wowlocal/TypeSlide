@@ -31,11 +31,7 @@ struct BGColor: PreferenceKey {
 }
 
 struct SlideView<Content: View>: View {
-	let content: Content
-
-	init(@ViewBuilder content: () -> Content) {
-		self.content = content()
-	}
+	@ViewBuilder var content: Content
 
 	private let aspectRatio: CGFloat = 16 / 9 // 4 / 3
 

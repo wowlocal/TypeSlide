@@ -9,8 +9,8 @@ import SwiftUI
 import HighlightSwift
 
 struct CodePreview<Preview: View>: View {
-	var preview: Preview
 	var code: String
+	@ViewBuilder var preview: Preview // TODO: public init(@ViewBuilder content: () -> Content)
 
 	var body: some View {
 		HStack(alignment: .center) {
@@ -55,5 +55,8 @@ Color.green.frame(width: 200, height: 200)
 """
 
 var codeSample1: CodePreview<some View> {
-	CodePreview(preview: Color.red.frame(width: 300, height: 300), code: sample1)
+	//CodePreview(preview: Color.red.frame(width: 300, height: 300), code: sample1)
+	CodePreview(code: sample1) {
+		Color.red.frame(width: 300, height: 300)
+	}
 }
