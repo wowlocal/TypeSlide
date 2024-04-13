@@ -7,11 +7,14 @@
 
 import SwiftUI
 
+@testable import HighlightSwift
+
 enum SlideType {
 	case title(String, subtitle: String)
-	case statement(String)
-	case titleSubtitle(title: String, subtitle: String = "")
+	case hipsterStatement(String)
+	case statement(title: String, subtitle: String = "")
 	case bullets(title: String, bullets: [String])
+	case sample1
 }
 
 protocol Slidable {
@@ -75,7 +78,9 @@ class PresentationManager: ObservableObject {
 
 struct Presentation: View {
 	@StateObject var presentationManager = PresentationManager([
-		.statement("Sound and look like notes, Make you predictable"),
+		.title("Анимации SwiftUI", subtitle: "От основ к продвинутым практикам"),
+		.sample1,
+		.hipsterStatement("Sound and look like notes, Make you predictable"),
 		.bullets(title: "Bullet lists",
 				 bullets: [
 					"Increase cognitive load",
@@ -86,46 +91,9 @@ struct Presentation: View {
 					"Sound and look like notes",
 					"Should be notes"
 				 ]),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.titleSubtitle(title: "Hello", subtitle: "World"),
-		.titleSubtitle(title: "Hello"),
-		.title("FAST LOVE", subtitle: "iA Presenter in three minutes"),
+		.hipsterStatement("statement"),
+		.statement(title: "Hello", subtitle: "World"),
+		.statement(title: "Hello"),
 	])
 
 	@Namespace var animation
@@ -148,11 +116,12 @@ struct Presentation: View {
 			bulletsSlide(title, bullets)
 		case .title(let title, let subtitle):
 			TitleSlide(title: title, subtitle: subtitle)
-		case .statement(let title):
+		case .hipsterStatement(let title):
 			StatementModern(title: title, animation: animation)
-		case .titleSubtitle(let title, let subtitle):
-//			TitleSubtitleClassic(title: title, subtitle: subtitle)
+		case .statement(let title, let subtitle):
 			TitleSubtitleModern(title: title, subtitle: subtitle)
+		case .sample1:
+			codeSample1
 		}
 	}
 
@@ -179,23 +148,12 @@ struct Presentation: View {
 		.keyboardShortcut(KeyEquivalent("d"), modifiers: [.command])
 	}
 
+	@Environment(\.highlight) var highlight
+
 	var body: some View {
 		VStack(spacing: 0) {
 			SlideView {
-				// slide
-				CodePreview(code: """
-	@ViewBuilder
-	var try3: some View {
-		if toggle {
-			//View1().id(2)
-			Color.red.frame(width: 300, height: 300)
-		} else {
-			//View2().id(2)
-			Color.green.frame(width: 200, height: 200)
-		}
-	}
-""",
-							preview: Color.red.frame(width: 300, height: 300))
+				slide
 			}
 			.bg(color: debug ? .clear : presentationManager.slideColor)
 			.onReceive(timer) { _ in
@@ -218,6 +176,11 @@ struct Presentation: View {
 				}
 				.keyboardShortcut(KeyEquivalent("n"), modifiers: [.control])
 			}.frame(width: 0, height: 0).opacity(0)
+		}.onAppear {
+			Task.detached {
+				// warum up cache
+				_ = try await highlight.attributed(sample1)
+			}
 		}
 	}
 }
@@ -281,25 +244,6 @@ struct WhatIsIdentityView: View {
 		}
 	}
 }
-
-// defaultSlide
-/*HStack {
-	Spacer()
-	WhatIsIdentityView()
-	Spacer()
-	SwiftCodeHighlightView(code: """
-		 @ViewBuilder
-		 var try3: some View {
-			 if toggle {
-				 //View1().id(2)
-				 Color.red.frame(width: 300, height: 300)
-			 } else {
-				 //View2().id(2)
-				 Color.green.frame(width: 200, height: 200)
-			 }
-		 }
-		""")
-}*/
 
 import AppKit
 
