@@ -50,8 +50,17 @@ class PresentationManager: ObservableObject {
 
 	var slideSubstepLimit: Int = 0
 
+	let colors: [Color]
+
+	var slideColor: Color {
+		colors[currentIndex]
+	}
+
 	init(_ slides: [SlideType]) {
 		self.slides = slides
+		self.colors = generateRgbColorsFunkyOrangePink(n: slides.count).map { rgb in
+			Color(.displayP3, red: Double(rgb.0) / 255, green: Double(rgb.1) / 255, blue: Double(rgb.2) / 255)
+		}
 	}
 
 	var currentSlide: SlideType {
@@ -99,10 +108,21 @@ struct Presentation: View {
 					"Sound and look like notes",
 					"Should be notes"
 				 ]),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
 		.titleSubtitle(title: "Hello", subtitle: "World"),
 		.titleSubtitle(title: "Hello"),
 		.title("FAST LOVE", subtitle: "iA Presenter in three minutes"),
-		.statement("statement"),
 	])
 
 	@Namespace var animation
@@ -133,10 +153,23 @@ struct Presentation: View {
 		}
 	}
 
+	let timer = Timer.publish(every: 0.03, on: .main, in: .common).autoconnect()
+	let colors: [Color] =
+	//generateRgbColorsFunkyOrangePink(n: 255)
+	createColorGradient(sampleSize: 255).map { ($0[0], $0[1], $0[2]) }
+		.map { rgb in
+			Color(.displayP3, red: Double(rgb.0) / 255, green: Double(rgb.1) / 255, blue: Double(rgb.2) / 255)
+		}
+	@State private var colorIndex = 0
+
 	var body: some View {
 		VStack(spacing: 0) {
 			SlideView {
 				slide
+			}
+			.bg(color: presentationManager.slideColor)
+			.onReceive(timer) { _ in
+				self.colorIndex = (self.colorIndex + 1) % self.colors.count
 			}
 			.animation(.smooth, value: presentationManager.currentIndex)
 			//.transition(.slide)
