@@ -43,6 +43,12 @@ struct AppFont {
 	let weight: Font.Weight
 	let design: Font.Design
 
+	static var code: AppFont {
+		AppFont(size: 36,
+				weight: .regular,
+				design: .monospaced)
+	}
+
 	static var statement: AppFont {
 		AppFont(size: 116,
 				weight: .bold,

@@ -88,6 +88,41 @@ struct Presentation: View {
 				 ]),
 		.statement("statement"),
 		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
+		.statement("statement"),
 		.titleSubtitle(title: "Hello", subtitle: "World"),
 		.titleSubtitle(title: "Hello"),
 		.title("FAST LOVE", subtitle: "iA Presenter in three minutes"),
@@ -130,16 +165,44 @@ struct Presentation: View {
 		}
 	@State private var colorIndex = 0
 
+	@State var debug: Bool = false
+
+	@ViewBuilder
+	var debugButton: some View {
+		Button(action: {
+			debug.toggle()
+		}) {
+			Text("Toggle Button")
+		}
+		.frame(width: 0, height: 0)
+		.opacity(0)
+		.keyboardShortcut(KeyEquivalent("d"), modifiers: [.command])
+	}
+
 	var body: some View {
 		VStack(spacing: 0) {
 			SlideView {
-				slide
+				// slide
+				CodePreview(code: """
+	@ViewBuilder
+	var try3: some View {
+		if toggle {
+			//View1().id(2)
+			Color.red.frame(width: 300, height: 300)
+		} else {
+			//View2().id(2)
+			Color.green.frame(width: 200, height: 200)
+		}
+	}
+""",
+							preview: Color.red.frame(width: 300, height: 300))
 			}
-			.bg(color: presentationManager.slideColor)
+			.bg(color: debug ? .clear : presentationManager.slideColor)
 			.onReceive(timer) { _ in
 				self.colorIndex = (self.colorIndex + 1) % self.colors.count
 			}
 			.animation(.smooth, value: presentationManager.currentIndex)
+			.background(debugButton)
 			//.transition(.slide)
 //			.animation(.linear(duration: 3), value: presentationManager.currentIndex)
 

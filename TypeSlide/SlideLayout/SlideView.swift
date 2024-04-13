@@ -64,19 +64,7 @@ struct SlideView<Content: View>: View {
 		return (frameWidth, frameHeight)
 	}
 
-	@State var debug: Bool = false
-
-	@ViewBuilder
-	var debugButton: some View {
-		Button(action: {
-			debug.toggle()
-		}) {
-			Text("Toggle Button")
-		}
-		.frame(width: 0, height: 0)
-		.opacity(0)
-		.keyboardShortcut(KeyEquivalent("d"), modifiers: [.command])
-	}
+	@Environment(\.debug) var debug
 
 	// @State // should not be state if manipulated outside of the view
 	var backgroundColor: Color = .white
@@ -94,7 +82,6 @@ struct SlideView<Content: View>: View {
 		GeometryReader { geometry in
 			let farmeSize: (width: CGFloat, height: CGFloat) = slideFrame(geometry.size)
 			ZStack {
-				debugButton
 				backgroundColor //debug ? Color.gray : Color.white // Slide background color
 				// Color.clear
 				// colors[colorIndex]
