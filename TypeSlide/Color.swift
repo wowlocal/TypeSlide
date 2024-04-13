@@ -172,12 +172,17 @@ func generateRgbColorsFunkyOrangePink(n: Int) -> [(Int, Int, Int)] {
 
 	var colors: [(Int, Int, Int)] = []
 	let segments = anchorPoints.count - 1
+	print("[Color]: Segments: \(segments)")
 
 	for i in 0..<n {
 		let segmentSize = max(n / segments, 1)
-		let currentSegment = i / segmentSize // Fatal error: Division by zero
+		print("[Color]: Segment Size: \(segmentSize)")
+		let currentSegment = i / segmentSize
+		print("[Color]: Current Segment: \(currentSegment)")
 		let progressInSegment = i % segmentSize
+		print("[Color]: Progress in Segment: \(progressInSegment)")
 		let progressFraction = Double(progressInSegment) / Double(segmentSize)
+		print("[Color]: Progress Fraction: \(progressFraction)")
 
 		if currentSegment < segments {
 			let (r1, g1, b1) = anchorPoints[currentSegment]
@@ -188,12 +193,12 @@ func generateRgbColorsFunkyOrangePink(n: Int) -> [(Int, Int, Int)] {
 			let b = Int(Double(b1) + (Double(b2) - Double(b1)) * progressFraction)
 
 			colors.append((r, g, b))
+			print("[Color]: Color appended: (\(r), \(g), \(b))")
 		} else {
 			colors.append(anchorPoints.last!)
+			print("[Color]: Last anchor point appended")
 		}
 	}
 
 	return colors
-
 }
-
