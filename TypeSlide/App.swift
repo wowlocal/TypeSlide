@@ -7,29 +7,6 @@
 
 import SwiftUI
 
-struct PrewviewView: View {
-	var body: some View {
-		TabView {
-//			SlideView {
-//				TitleAndBulletsSlide(title: "Key Points", bullets: ["Point One", "Point Two", "Point Three"])
-//					.previewDisplayName("Title and Bullets Slide")
-//			}
-//			SlideView {
-//				TitleSlide(title: "Presentation Title")
-//					.previewDisplayName("Title Slide")
-//			}
-			SlideView {
-				StatementSlide(statement: "SwiftUI makes UI development incredibly efficient.")
-					.previewDisplayName("Statement Slide")
-			}
-			SlideView {
-				TitleSubtitleClassic(title: "Welcome to SwiftUIKeynoteClone", subtitle: "This is a simple slide.")
-			}
-		}
-		.background(Color.gray)
-	}
-}
-
 enum SlideType {
 	case title(String, subtitle: String)
 	case statement(String)
