@@ -19,7 +19,7 @@ struct TitleText: View {
 				.fontStyle(.statement)
 				.padding()
 				//.scaleEffect(scale) TODO: rework all vues to use scale effect
-				.foregroundColor(.orange)
+				.foregroundColor(.white)
 				.contentTransition(.opacity)
 				.multilineTextAlignment(.center)
 				.minimumScaleFactor(0.1)

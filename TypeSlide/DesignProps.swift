@@ -44,9 +44,9 @@ struct AppFont {
 	let design: Font.Design
 
 	static var statement: AppFont {
-		AppFont(size: AppSizes.statementFont,
-				weight: AppFontWeights.titleWeight,
-				design: AppFontDesigns.titleDesign)
+		AppFont(size: 116,
+				weight: .bold,
+				design: .serif)
 	}
 
 	// Title font
