@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TitleText: View {
+struct StatementModern: View {
 	var title: String
 
 	var animation: Namespace.ID
@@ -17,9 +17,11 @@ struct TitleText: View {
 			Spacer()
 			Text(title)
 				.fontStyle(.statement)
+				.italic()
 				.padding()
 				//.scaleEffect(scale) TODO: rework all vues to use scale effect
 				.foregroundColor(.white)
+				//.blendMode(.overlay)
 				.contentTransition(.opacity)
 				.multilineTextAlignment(.center)
 				.minimumScaleFactor(0.1)

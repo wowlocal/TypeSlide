@@ -137,7 +137,7 @@ struct Presentation: View {
 		case .title(let title, let subtitle):
 			TitleSlide(title: title, subtitle: subtitle)
 		case .statement(let title):
-			TitleText(title: title, animation: animation)
+			StatementModern(title: title, animation: animation)
 		case .titleSubtitle(let title, let subtitle):
 //			TitleSubtitleClassic(title: title, subtitle: subtitle)
 			TitleSubtitleModern(title: title, subtitle: subtitle)
