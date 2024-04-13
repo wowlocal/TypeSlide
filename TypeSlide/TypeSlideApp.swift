@@ -286,6 +286,7 @@ struct TypeSlideApp: App {
 						window.standardWindowButton(.closeButton)?.isHidden = true
 						window.standardWindowButton(.miniaturizeButton)?.isHidden = true
 						window.standardWindowButton(.zoomButton)?.isHidden = true
+						window.aspectRatio = CGSize(width: 16, height: 9)
 					}
 				}
         }
