@@ -29,18 +29,35 @@ struct SwiftCodeHighlightView: View {
 
 	// .screen збс, а .plusLighter делает ярче там где не надо
 
+	// тема: .xcode или .gradient или .solarized, .paraiso
+	// low contrast: .horizon, .edge
+	// контрастная комплиментарная: .gradient
+
 	var codeView: some View {
 		CodeText(code)
-			.codeTextColors(.theme(theme))
+			.codeTextColors(.theme(.gradient))
 			.codeTextMode(.language(.swift))
 			.fontStyle(.code)
 			//.blendMode(debug ? BlendMode.color : BlendMode.normal)
-			.blendMode(selectedBlendMode)
+			.blendMode(.screen)
 			.padding(50)
 			.background(
-				RoundedRectangle(cornerRadius: 20.00, style: .continuous)
+				RoundedRectangle(cornerRadius: 30, style: .continuous)
+//				UnevenRoundedRectangle(topLeadingRadius: 16,
+//									   bottomLeadingRadius: 30,
+//									   bottomTrailingRadius: 160,
+//									   topTrailingRadius: 30,
+//									   style: .continuous)
+//				UnevenRoundedRectangle(topLeadingRadius: 60,
+//									   bottomLeadingRadius: 10,
+//									   bottomTrailingRadius: 150,
+//									   topTrailingRadius: 10,
+//									   style: .continuous)
+//				RotatedShape(shape: RoundedRectangle(cornerRadius: 30),
+//										  angle: Angle(degrees: 2),
+//										  anchor: .topLeading)
 					.fill(.ultraThinMaterial)
-					.offset(y: 10)
+					.offset(y: 0)
 					.zIndex(0)
 			)
 			.padding(.trailing, 120)
@@ -48,16 +65,16 @@ struct SwiftCodeHighlightView: View {
 
 	var body: some View {
 		VStack {
-			Picker(selection: $selectedBlendMode, label: Text("")) {
-				ForEach(blendModes, id: \.self) {
-					Text("\($0)")
-				}
-			}.frame(width: 100, height: 200).scaleEffect(2)
-			Picker(selection: $theme, label: Text("")) {
-				ForEach(HighlightTheme.allCases, id: \.self) {
-					Text("\($0)")
-				}
-			}.frame(width: 100, height: 200).scaleEffect(2)
+//			Picker(selection: $selectedBlendMode, label: Text("")) {
+//				ForEach(blendModes, id: \.self) {
+//					Text("\($0)")
+//				}
+//			}.frame(width: 100, height: 200).scaleEffect(2)
+//			Picker(selection: $theme, label: Text("")) {
+//				ForEach(HighlightTheme.allCases, id: \.self) {
+//					Text("\($0)")
+//				}
+//			}.frame(width: 100, height: 200).scaleEffect(2)
 			codeView
 		}
 	}
