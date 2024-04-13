@@ -98,6 +98,7 @@ class PresentationManager: ObservableObject {
 
 struct Presentation: View {
 	@StateObject var presentationManager = PresentationManager([
+		.statement("Sound and look like notes, Make you predictable"),
 		.bullets(title: "Bullet lists",
 				 bullets: [
 					"Increase cognitive load",
@@ -108,16 +109,6 @@ struct Presentation: View {
 					"Sound and look like notes",
 					"Should be notes"
 				 ]),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
-		.statement("statement"),
 		.statement("statement"),
 		.statement("statement"),
 		.titleSubtitle(title: "Hello", subtitle: "World"),
@@ -251,6 +242,25 @@ struct WhatIsIdentityView: View {
 	}
 }
 
+// defaultSlide
+/*HStack {
+	Spacer()
+	WhatIsIdentityView()
+	Spacer()
+	SwiftCodeHighlightView(code: """
+		 @ViewBuilder
+		 var try3: some View {
+			 if toggle {
+				 //View1().id(2)
+				 Color.red.frame(width: 300, height: 300)
+			 } else {
+				 //View2().id(2)
+				 Color.green.frame(width: 200, height: 200)
+			 }
+		 }
+		""")
+}*/
+
 import AppKit
 
 @main
@@ -258,24 +268,6 @@ struct TypeSlideApp: App {
 
     var body: some Scene {
 		WindowGroup {
-			// defaultSlide
-			/*HStack {
-				Spacer()
-				WhatIsIdentityView()
-				Spacer()
-				SwiftCodeHighlightView(code: """
-					 @ViewBuilder
-					 var try3: some View {
-						 if toggle {
-							 //View1().id(2)
-							 Color.red.frame(width: 300, height: 300)
-						 } else {
-							 //View2().id(2)
-							 Color.green.frame(width: 200, height: 200)
-						 }
-					 }
-					""")
-			}*/
 			Presentation()
 				//.padding([.top, .bottom], 30)
 				.ignoresSafeArea(.all)
