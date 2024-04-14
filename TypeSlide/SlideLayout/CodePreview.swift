@@ -8,6 +8,41 @@
 import SwiftUI
 import HighlightSwift
 
+struct JustCode: View {
+	var samples: [KeyPath<Samples, String>]
+	@Binding var substep: Int
+
+	var numberOfSubsteps: Int {
+		samples.count - 1
+	}
+
+	init(code: KeyPath<Samples, String>) {
+		samples = [code]
+		self._substep = .constant(0)
+	}
+
+	init(code samples: [KeyPath<Samples, String>]) {
+		self.samples = samples
+		self._substep = .constant(0)
+	}
+
+	@Environment(\.codeSamples) var codeSamples
+
+	var body: some View {
+		SwiftCodeHighlightView(
+			code: codeSamples.colored[
+				samples[substep]
+			] ?? ""
+		)
+	}
+
+	func setClicker(_ binding: Binding<Int>) -> Self {
+		var copy = self
+		copy._substep = binding
+		return copy
+	}
+}
+
 struct CodePreview<Preview: View>: View {
 	var code: KeyPath<Samples, String>
 	@Environment(\.codeSamples) var codeSamples

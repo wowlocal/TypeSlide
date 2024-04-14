@@ -16,6 +16,8 @@ struct Samples {
 	}
 }
 
+// --------------------------------------------------------------- //
+
 var codeSample0: CodePreview<some View> {
 	CodePreview(code: \.identity0) {
 		WhatIsIdentity0()
@@ -28,19 +30,39 @@ var codeSample1: CodePreview<some View> {
 	}
 }
 
+// --------------------------------------------------------------- //
+
 var rectSomePreview: CodePreview<some View> {
-	//CodePreview(preview: Color.red.frame(width: 300, height: 300), code: sample1)
 	CodePreview(code: \.rectSome) {
 		RectSomePreview()
 	}
 }
 
 var rectAnyPreview: CodePreview<some View> {
-	//CodePreview(preview: Color.red.frame(width: 300, height: 300), code: sample1)
 	CodePreview(code: \.rectAny) {
 		RectAnyPreview()
 	}
 }
+
+var rectExplicitId: CodePreview<some View> {
+	CodePreview(code: \.rectExplicitIdentity) {
+		RectExplicitId()
+	}
+}
+
+var impossibleAnyView: JustCode {
+	JustCode(code: \.impossibleAnyView)
+}
+
+var possibleAnyView: JustCode {
+	JustCode(code: [
+		\.possibleAnyView0,
+		\.possibleAnyView1,
+		\.possibleAnyView2,
+	])
+}
+
+// --------------------------------------------------------------- //
 
 var codeSample4: CodePreview<some View> {
 	//CodePreview(preview: Color.red.frame(width: 300, height: 300), code: sample1)

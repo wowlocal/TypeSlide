@@ -57,4 +57,72 @@ var color: some View {
 var body: some View { color }
 """ }
 
+	var rectExplicitIdentity: String { """
+@ViewBuilder
+var color: some View {
+	if toggle {
+		Color.orange.id(1337)
+	} else {
+		Color.green.id(1337)
+	}
+}
+""" }
+
+	var impossibleAnyView: String { """
+struct Green: View { var body: some View { Color.green } }
+struct Orange: View { var body: some View { Color.orange } }
+
+...
+
+!!! error: Branches have mismatching types 'Green' and 'Orange' !!!
+
+var color: some View {
+	if toggle {
+		Green()
+	} else {
+		Orange()
+	}
+}
+""" }
+
+	var possibleAnyView0: String { """
+struct Green: View { var body: some View { Color.green } }
+struct Orange: View { var body: some View { Color.orange } }
+
+...
+
+var color: any View {
+	if toggle {
+		Green()
+	} else {
+		Orange()
+	}
+}
+""" }
+
+	var possibleAnyView1: String { """
+!!! error: Branches have mismatching types 'Green' and 'Orange' !!!
+var body: some View { color }
+
+var color: any View {
+	if toggle {
+		Green()
+	} else {
+		Orange()
+	}
+}
+""" }
+
+	var possibleAnyView2: String { """
+var body: some View { AnyView(color) }
+
+var color: any View {
+	if toggle {
+		Green()
+	} else {
+		Orange()
+	}
+}
+""" }
+
 }

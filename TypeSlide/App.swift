@@ -95,6 +95,11 @@ struct Presentation: View {
 		return view.setClicker($presentationManager.substep)
 	}
 
+	func code(_ code: JustCode) -> JustCode {
+		presentationManager.slideSubstepLimit = code.numberOfSubsteps
+		return code.setClicker($presentationManager.substep)
+	}
+
 	let timer = Timer.publish(every: 0.03, on: .main, in: .common).autoconnect()
 	let colors: [Color] =
 	//generateRgbColorsFunkyOrangePink(n: 255)

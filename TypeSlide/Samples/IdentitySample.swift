@@ -8,17 +8,8 @@
 import Foundation
 import SwiftUI
 
-struct View1: View {
-	var body: some View {
-		Color.green.frame(width: 200, height: 200).id("1")
-	}
-}
-
-struct View2: View {
-	var body: some View {
-		Color.orange.frame(width: 300, height: 300).id("1")
-	}
-}
+struct Green: View { var body: some View { Color.green } }
+struct Orange: View { var body: some View { Color.orange } }
 
 struct WhatIsIdentity0: View {
 	@State var toggle: Bool = true
@@ -90,6 +81,28 @@ struct RectAnyPreview: View {
 		color
 			.onAppear {
 				withAnimation(Animation.default.delay(1.5).repeatCount(5)) {
+					self.toggle.toggle()
+				}
+			}
+	}
+}
+
+struct RectExplicitId: View {
+	@State var toggle: Bool = true
+
+	@ViewBuilder
+	var color: some View {
+		if toggle {
+			Color.orange.frame(width: 300, height: 300).id(1337)
+		} else {
+			Color.green.frame(width: 200, height: 200).id(1337)
+		}
+	}
+
+	var body: some View {
+		color
+			.onAppear {
+				withAnimation(Animation.default.delay(1.5).repeatCount(4)) {
 					self.toggle.toggle()
 				}
 			}

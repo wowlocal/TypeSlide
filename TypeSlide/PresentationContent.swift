@@ -8,8 +8,18 @@
 import Foundation
 
 // not index
-let initialSlize = 5
-let codeSamplesToWarmUp: [KeyPath<Samples, String>] = [\.identity1, \.identity0, \.rectSome, \.rectAny]
+let initialSlize = 10
+let codeSamplesToWarmUp: [KeyPath<Samples, String>] = [
+	\.identity1,
+	 \.identity0,
+	 \.rectSome,
+	 \.rectAny,
+	 \.rectExplicitIdentity,
+	 \.impossibleAnyView,
+	 \.possibleAnyView0,
+	 \.possibleAnyView1,
+	 \.possibleAnyView2,
+]
 
 let slides: [SlideType] = [
 	.title("SwiftUI анимации", subtitle: "От основ к продвинутым практикам"), // 1
@@ -17,7 +27,22 @@ let slides: [SlideType] = [
 	.identitySample1, // 3
 	.rectSome, // 4
 	.rectAny, // 5
-	.hipsterStatement("Sound and look like notes, Make you predictable"),
+	.statement(title: "Strutural Identity"), // 6
+	.statement(title: "Strutural Identity", subtitle: "А как насчет explicit identity"), // 7
+	.rectExplicitId,
+	.hipsterStatement("Типизация играет ключевую роль в определении identity"),
+	.impossibleAnyView,
+	.statement(title: "", subtitle: "some View -> any View"),
+	.possibleAnyView,
+	.bullets(title: "AnyView",
+			 bullets: [
+				"Makes code harder to understand",
+				"Fewer compile-time diagnostics",
+				"Worse performance when not needed",
+			 ]),
+	.hipsterStatement("WIP"),
+
+
 	.bullets(title: "Bullet lists",
 			 bullets: [
 				"Increase cognitive load",
@@ -56,7 +81,13 @@ extension Presentation {
 		case .rectSome:
 			rectSomePreview
 		case .rectAny:
-			rectAnyPreview
+			code(rectAnyPreview, substeps: true)
+		case .rectExplicitId:
+			rectExplicitId
+		case .impossibleAnyView:
+			impossibleAnyView
+		case .possibleAnyView:
+			code(possibleAnyView)
 		case .sample4:
 			codeSample4
 		case .sample5:
@@ -74,6 +105,9 @@ enum SlideType {
 	case identitySample1
 	case rectSome
 	case rectAny
+	case rectExplicitId
+	case impossibleAnyView
+	case possibleAnyView
 	case sample4
 	case sample5
 }
