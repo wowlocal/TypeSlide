@@ -29,18 +29,18 @@ let slides: [SlideType] = [
 	.rectAny, // 5
 	.statement(title: "Strutural Identity"), // 6
 	.statement(title: "Strutural Identity", subtitle: "А как насчет explicit identity"), // 7
-	.rectExplicitId,
-	.hipsterStatement("Типизация играет ключевую роль в определении identity"),
-	.impossibleAnyView,
-	.statement(title: "", subtitle: "some View -> any View"),
-	.possibleAnyView,
-	.bullets(title: "AnyView",
+	.rectExplicitId, // 8
+	.hipsterStatement("Типизация играет ключевую роль в определении identity"), // 9
+	.impossibleAnyView, // 10
+	.statement(title: "", subtitle: "some View -> any View"), // 11
+	.possibleAnyView, // 12
+	.bullets(title: "AnyView", // 13
 			 bullets: [
 				"Makes code harder to understand",
 				"Fewer compile-time diagnostics",
 				"Worse performance when not needed",
 			 ]),
-	.hipsterStatement("WIP"),
+	.hipsterStatement("Not Recommended"), // 14
 
 
 	.bullets(title: "Bullet lists",

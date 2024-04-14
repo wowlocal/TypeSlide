@@ -131,10 +131,12 @@ struct Presentation: View {
 			SlideView {
 				ZStack(alignment: .bottomTrailing) {
 					slide
-					Text("\(presentationManager.currentIndex + 1) / \(presentationManager.slidesCount)")
-						.transaction {
-							$0.animation = nil
-						}
+					if debug {
+						Text("\(presentationManager.currentIndex + 1) / \(presentationManager.slidesCount)")
+							.transaction {
+								$0.animation = nil
+							}
+					}
 				}
 			}
 			.bg(color: debug ? .clear : presentationManager.slideColor)
