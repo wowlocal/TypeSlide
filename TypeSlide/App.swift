@@ -5,6 +5,9 @@
 //  Created by Misha Nya on 30.03.2024.
 //
 
+// not index
+let initialSlize = 2
+
 import SwiftUI
 
 @testable import HighlightSwift
@@ -24,7 +27,7 @@ protocol Slidable {
 
 class PresentationManager: ObservableObject {
 	@Published var slides: [SlideType]
-	@Published var currentIndex: Int = 0
+	@Published var currentIndex: Int = initialSlize - 1
 
 	@Published var substep: Int = 0
 
@@ -184,64 +187,3 @@ struct Presentation: View {
 		}
 	}
 }
-
-
-let defaultSlide = Presentation()
-
-struct View1: View {
-	var body: some View {
-		Color.green.frame(width: 200, height: 200).id("1")//.transition(.scale)
-	}
-}
-
-struct View2: View {
-	var body: some View {
-		Color.red.frame(width: 300, height: 300).id("1")//.transition(.scale)
-	}
-}
-
-struct WhatIsIdentityView: View {
-	@State var toggle: Bool = true
-
-	var size: CGFloat {
-		toggle ? 300 : 200
-	}
-
-	var correctlyAnimating: Color {
-		toggle ? .red : .green
-	}
-
-	var try2: some View {
-		if toggle {
-			//View1().id(2)
-			Color.red.frame(width: 300, height: 300)//.id("1")
-		} else {
-			//View2().id(2)
-			Color.green.frame(width: 200, height: 200)//.id("1")
-		}
-	}
-
-	@ViewBuilder
-	var try3: some View {
-		if toggle {
-			Color.red.frame(width: 300, height: 300)
-		} else {
-			Color.green.frame(width: 200, height: 200)
-		}
-	}
-
-	var body: some View {
-		VStack {
-			correctlyAnimating.frame(width: size, height: size)
-			try2
-			try3
-
-			Button("togglle") {
-				withAnimation {
-					toggle.toggle()
-				}
-			}
-		}
-	}
-}
-
