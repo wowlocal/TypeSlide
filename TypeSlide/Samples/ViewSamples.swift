@@ -28,17 +28,17 @@ var codeSample1: CodePreview<some View> {
 	}
 }
 
-var codeSample2: CodePreview<some View> {
+var rectSomePreview: CodePreview<some View> {
 	//CodePreview(preview: Color.red.frame(width: 300, height: 300), code: sample1)
-	CodePreview(code: \.identity1) {
-		WhatIsIdentity1()
+	CodePreview(code: \.rectSome) {
+		RectSomePreview()
 	}
 }
 
-var codeSample3: CodePreview<some View> {
+var rectAnyPreview: CodePreview<some View> {
 	//CodePreview(preview: Color.red.frame(width: 300, height: 300), code: sample1)
-	CodePreview(code: \.identity1) {
-		WhatIsIdentity1()
+	CodePreview(code: \.rectAny) {
+		RectAnyPreview()
 	}
 }
 

@@ -20,6 +20,20 @@ struct View2: View {
 	}
 }
 
+struct WhatIsIdentity0: View {
+	@State var toggle: Bool = true
+	var body: some View {
+		Color.orange
+			.frame(width: toggle ? 300 : 200)
+			.frame(height: 300)
+			.onAppear {
+				withAnimation(Animation.default.delay(1.5).repeatCount(5)) {
+					self.toggle.toggle()
+				}
+			}
+	}
+}
+
 struct WhatIsIdentity1: View {
 	@State var toggle: Bool = true
 
@@ -39,12 +53,19 @@ struct WhatIsIdentity1: View {
 	}
 }
 
-struct WhatIsIdentity0: View {
+struct RectSomePreview: View {
 	@State var toggle: Bool = true
+
+	var color: some View {
+		if toggle {
+			Color.orange.frame(width: 300, height: 300)
+		} else {
+			Color.green.frame(width: 200, height: 200)
+		}
+	}
+
 	var body: some View {
-		Color.orange
-			.frame(width: toggle ? 300 : 200)
-			.frame(height: 300)
+		color
 			.onAppear {
 				withAnimation(Animation.default.delay(1.5).repeatCount(5)) {
 					self.toggle.toggle()
@@ -53,6 +74,27 @@ struct WhatIsIdentity0: View {
 	}
 }
 
+struct RectAnyPreview: View {
+	@State var toggle: Bool = true
+
+	@ViewBuilder
+	var color: some View {
+		if toggle {
+			Color.orange.frame(width: 300, height: 300)
+		} else {
+			Color.green.frame(width: 200, height: 200)
+		}
+	}
+
+	var body: some View {
+		color
+			.onAppear {
+				withAnimation(Animation.default.delay(1.5).repeatCount(5)) {
+					self.toggle.toggle()
+				}
+			}
+	}
+}
 
 
 /*

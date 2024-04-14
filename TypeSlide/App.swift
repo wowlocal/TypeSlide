@@ -2,19 +2,6 @@ import SwiftUI
 
 @testable import HighlightSwift
 
-enum SlideType {
-	case title(String, subtitle: String)
-	case hipsterStatement(String)
-	case statement(title: String, subtitle: String = "")
-	case bullets(title: String, bullets: [String])
-	case sample0
-	case sample1
-	case sample2
-	case sample3
-	case sample4
-	case sample5
-}
-
 protocol Slidable {
 	var substep: Int { get set }
 	var numberOfSubsteps: Int { get }
@@ -157,7 +144,9 @@ struct Presentation: View {
 
 			Group {
 				Button("Previous") {
-					presentationManager.previous()
+					withAnimation(nil) {
+						presentationManager.previous()
+					}
 				}
 				.keyboardShortcut(KeyEquivalent("p"), modifiers: [.control])
 

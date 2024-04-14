@@ -8,15 +8,15 @@
 import Foundation
 
 // not index
-let initialSlize = 3
-let codeSamplesToWarmUp: [KeyPath<Samples, String>] = [\.identity1, \.identity0]
+let initialSlize = 5
+let codeSamplesToWarmUp: [KeyPath<Samples, String>] = [\.identity1, \.identity0, \.rectSome, \.rectAny]
 
 let slides: [SlideType] = [
 	.title("SwiftUI анимации", subtitle: "От основ к продвинутым практикам"), // 1
-	.sample0, // 2
-	.sample1, // 3
-	.sample2, // 4
-	.sample3,
+	.identitySample0, // 2
+	.identitySample1, // 3
+	.rectSome, // 4
+	.rectAny, // 5
 	.hipsterStatement("Sound and look like notes, Make you predictable"),
 	.bullets(title: "Bullet lists",
 			 bullets: [
@@ -49,18 +49,31 @@ extension Presentation {
 			StatementModern(title: title, animation: animation)
 		case .statement(let title, let subtitle):
 			TitleSubtitleModern(title: title, subtitle: subtitle)
-		case .sample0:
+		case .identitySample0:
 			codeSample0
-		case .sample1:
+		case .identitySample1:
 			code(codeSample1, substeps: true)
-		case .sample2:
-			codeSample2
-		case .sample3:
-			codeSample3
+		case .rectSome:
+			rectSomePreview
+		case .rectAny:
+			rectAnyPreview
 		case .sample4:
 			codeSample4
 		case .sample5:
 			codeSample5
 		}
 	}
+}
+
+enum SlideType {
+	case title(String, subtitle: String)
+	case hipsterStatement(String)
+	case statement(title: String, subtitle: String = "")
+	case bullets(title: String, bullets: [String])
+	case identitySample0
+	case identitySample1
+	case rectSome
+	case rectAny
+	case sample4
+	case sample5
 }
