@@ -19,6 +19,10 @@ enum SlideType {
 	case statement(title: String, subtitle: String = "")
 	case bullets(title: String, bullets: [String])
 	case sample1
+	case sample2
+	case sample3
+	case sample4
+	case sample5
 }
 
 protocol Slidable {
@@ -82,8 +86,10 @@ class PresentationManager: ObservableObject {
 
 struct Presentation: View {
 	@StateObject var presentationManager = PresentationManager([
-		.title("Анимации SwiftUI", subtitle: "От основ к продвинутым практикам"),
+		.title("SwiftUI анимации", subtitle: "От основ к продвинутым практикам"),
 		.sample1,
+		.sample2,
+		.sample3,
 		.hipsterStatement("Sound and look like notes, Make you predictable"),
 		.bullets(title: "Bullet lists",
 				 bullets: [
@@ -113,6 +119,20 @@ struct Presentation: View {
 		return bullets
 	}
 
+	// использовать для гомогенных вьюх, например можно скомпоновать несколько statement друг за другом
+	// на одном слайде
+	func composedSlide(_ views: [some View]) -> GenericComposedSlide<some View> {
+		let composed = GenericComposedSlide(substep: $presentationManager.substep, views: views)
+		presentationManager.slideSubstepLimit = composed.numberOfSubsteps
+		return composed
+	}
+
+	func code(_ prewview: CodePreview<some View>, substeps: Bool = false) -> CodePreview<some View> {
+		let view = prewview.showAs(substeps: substeps)
+		presentationManager.slideSubstepLimit = view.numberOfSubsteps
+		return view.setClicker($presentationManager.substep)
+	}
+
 	@ViewBuilder
 	var slide: some View {
 		switch presentationManager.currentSlide {
@@ -125,7 +145,15 @@ struct Presentation: View {
 		case .statement(let title, let subtitle):
 			TitleSubtitleModern(title: title, subtitle: subtitle)
 		case .sample1:
-			codeSample1
+			code(codeSample1, substeps: true)
+		case .sample2:
+			codeSample2
+		case .sample3:
+			codeSample3
+		case .sample4:
+			codeSample4
+		case .sample5:
+			codeSample5
 		}
 	}
 

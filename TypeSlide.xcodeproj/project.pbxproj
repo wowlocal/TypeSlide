@@ -31,6 +31,7 @@
 		C6BDB98A2BCAA01C00C52249 /* CodePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BDB9892BCAA01C00C52249 /* CodePreview.swift */; };
 		C6BDB98C2BCBEAAA00C52249 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BDB98B2BCBEAAA00C52249 /* Entry.swift */; };
 		C6BDB98F2BCBEB8000C52249 /* IdentitySample.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BDB98E2BCBEB8000C52249 /* IdentitySample.swift */; };
+		C6BDB9912BCC0A2000C52249 /* ComposedSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BDB9902BCC0A2000C52249 /* ComposedSlide.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		C6BDB9892BCAA01C00C52249 /* CodePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodePreview.swift; sourceTree = "<group>"; };
 		C6BDB98B2BCBEAAA00C52249 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		C6BDB98E2BCBEB8000C52249 /* IdentitySample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentitySample.swift; sourceTree = "<group>"; };
+		C6BDB9902BCC0A2000C52249 /* ComposedSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposedSlide.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 				C60B57292BC1519C006DD219 /* CodeHighlighter.swift */,
 				C6BDB9872BCA8FDD00C52249 /* Color.swift */,
 				C6BDB98B2BCBEAAA00C52249 /* Entry.swift */,
+				C6BDB9902BCC0A2000C52249 /* ComposedSlide.swift */,
 			);
 			path = TypeSlide;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6BDB98C2BCBEAAA00C52249 /* Entry.swift in Sources */,
+				C6BDB9912BCC0A2000C52249 /* ComposedSlide.swift in Sources */,
 				C63FB3B62BB87B62002C22D6 /* StatementModern.swift in Sources */,
 				C6BDB98F2BCBEB8000C52249 /* IdentitySample.swift in Sources */,
 				C6A15AA72BBC2DFA00371F19 /* StatementSlide.swift in Sources */,

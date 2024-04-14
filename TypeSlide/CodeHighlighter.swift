@@ -56,8 +56,8 @@ struct SwiftCodeHighlightView: View {
 					.offset(y: 0)
 					.zIndex(0)
 			)
-			.padding(.trailing, 120)
-			.padding(.leading, -86)
+			//.padding(.trailing, 120)
+			//.padding(.leading, -86)
 	}
 
 	var body: some View {
