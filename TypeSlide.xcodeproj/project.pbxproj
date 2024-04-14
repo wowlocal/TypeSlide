@@ -29,6 +29,7 @@
 		C6BDB9862BC9D0E600C52249 /* SectionStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BDB9852BC9D0E600C52249 /* SectionStart.swift */; };
 		C6BDB9882BCA8FDD00C52249 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BDB9872BCA8FDD00C52249 /* Color.swift */; };
 		C6BDB98A2BCAA01C00C52249 /* CodePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BDB9892BCAA01C00C52249 /* CodePreview.swift */; };
+		C6BDB98C2BCBEAAA00C52249 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BDB98B2BCBEAAA00C52249 /* Entry.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		C6BDB9852BC9D0E600C52249 /* SectionStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionStart.swift; sourceTree = "<group>"; };
 		C6BDB9872BCA8FDD00C52249 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		C6BDB9892BCAA01C00C52249 /* CodePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodePreview.swift; sourceTree = "<group>"; };
+		C6BDB98B2BCBEAAA00C52249 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 				C63FB3DE2BB9A907002C22D6 /* DesignProps.swift */,
 				C60B57292BC1519C006DD219 /* CodeHighlighter.swift */,
 				C6BDB9872BCA8FDD00C52249 /* Color.swift */,
+				C6BDB98B2BCBEAAA00C52249 /* Entry.swift */,
 			);
 			path = TypeSlide;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6BDB98C2BCBEAAA00C52249 /* Entry.swift in Sources */,
 				C63FB3B62BB87B62002C22D6 /* StatementModern.swift in Sources */,
 				C6A15AA72BBC2DFA00371F19 /* StatementSlide.swift in Sources */,
 				C6A15AAA2BBC2F9500371F19 /* TitleSubtitle.swift in Sources */,
