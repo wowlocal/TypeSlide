@@ -1,13 +1,6 @@
-//
-//  TypeSlideApp.swift
-//  TypeSlide
-//
-//  Created by Misha Nya on 30.03.2024.
-//
-
 // not index
-let initialSlize = 1
-let codeSamplesToWarmUp: [KeyPath<Samples, String>] = [\.identity1]
+let initialSlize = 3
+let codeSamplesToWarmUp: [KeyPath<Samples, String>] = [\.identity1, \.identity0]
 
 import SwiftUI
 
@@ -18,6 +11,7 @@ enum SlideType {
 	case hipsterStatement(String)
 	case statement(title: String, subtitle: String = "")
 	case bullets(title: String, bullets: [String])
+	case sample0
 	case sample1
 	case sample2
 	case sample3
@@ -37,6 +31,10 @@ class PresentationManager: ObservableObject {
 	@Published var substep: Int = 0
 
 	var slideSubstepLimit: Int = 0
+
+	var slidesCount: Int {
+		slides.count
+	}
 
 	let colors: [Color]
 
@@ -87,6 +85,7 @@ class PresentationManager: ObservableObject {
 struct Presentation: View {
 	@StateObject var presentationManager = PresentationManager([
 		.title("SwiftUI анимации", subtitle: "От основ к продвинутым практикам"),
+		.sample0,
 		.sample1,
 		.sample2,
 		.sample3,
@@ -144,6 +143,8 @@ struct Presentation: View {
 			StatementModern(title: title, animation: animation)
 		case .statement(let title, let subtitle):
 			TitleSubtitleModern(title: title, subtitle: subtitle)
+		case .sample0:
+			codeSample0
 		case .sample1:
 			code(codeSample1, substeps: true)
 		case .sample2:
@@ -186,7 +187,13 @@ struct Presentation: View {
 	var body: some View {
 		VStack(spacing: 0) {
 			SlideView {
-				slide
+				ZStack(alignment: .bottomTrailing) {
+					slide
+					Text("\(presentationManager.currentIndex + 1) / \(presentationManager.slidesCount)")
+						.transaction {
+							$0.animation = nil
+						}
+				}
 			}
 			.bg(color: debug ? .clear : presentationManager.slideColor)
 			.onReceive(timer) { _ in

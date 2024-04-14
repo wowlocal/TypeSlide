@@ -11,17 +11,6 @@ class DebugState: ObservableObject {
     @Published var isEnabled: Bool = false
 }
 
-struct DebugEnvironmentKey: EnvironmentKey {
-	static let defaultValue: Bool = false // Default value for the debug variable
-}
-
-extension EnvironmentValues {
-	var debug: Bool {
-		get { self[DebugEnvironmentKey.self] }
-		set { self[DebugEnvironmentKey.self] = newValue }
-	}
-}
-
 struct BGColor: PreferenceKey {
 	static var defaultValue: Color = .white // Default color
 

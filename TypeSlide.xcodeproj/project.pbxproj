@@ -32,6 +32,9 @@
 		C6BDB98C2BCBEAAA00C52249 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BDB98B2BCBEAAA00C52249 /* Entry.swift */; };
 		C6BDB98F2BCBEB8000C52249 /* IdentitySample.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BDB98E2BCBEB8000C52249 /* IdentitySample.swift */; };
 		C6BDB9912BCC0A2000C52249 /* ComposedSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BDB9902BCC0A2000C52249 /* ComposedSlide.swift */; };
+		C6BDB9932BCC19F100C52249 /* CodeSamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BDB9922BCC19F100C52249 /* CodeSamples.swift */; };
+		C6BDB9952BCC1C8700C52249 /* ViewSamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BDB9942BCC1C8700C52249 /* ViewSamples.swift */; };
+		C6BDB9972BCC1CBC00C52249 /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BDB9962BCC1CBC00C52249 /* Env.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +78,9 @@
 		C6BDB98B2BCBEAAA00C52249 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		C6BDB98E2BCBEB8000C52249 /* IdentitySample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentitySample.swift; sourceTree = "<group>"; };
 		C6BDB9902BCC0A2000C52249 /* ComposedSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposedSlide.swift; sourceTree = "<group>"; };
+		C6BDB9922BCC19F100C52249 /* CodeSamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeSamples.swift; sourceTree = "<group>"; };
+		C6BDB9942BCC1C8700C52249 /* ViewSamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSamples.swift; sourceTree = "<group>"; };
+		C6BDB9962BCC1CBC00C52249 /* Env.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Env.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +148,7 @@
 				C6BDB9872BCA8FDD00C52249 /* Color.swift */,
 				C6BDB98B2BCBEAAA00C52249 /* Entry.swift */,
 				C6BDB9902BCC0A2000C52249 /* ComposedSlide.swift */,
+				C6BDB9962BCC1CBC00C52249 /* Env.swift */,
 			);
 			path = TypeSlide;
 			sourceTree = "<group>";
@@ -189,6 +196,8 @@
 			isa = PBXGroup;
 			children = (
 				C6BDB98E2BCBEB8000C52249 /* IdentitySample.swift */,
+				C6BDB9922BCC19F100C52249 /* CodeSamples.swift */,
+				C6BDB9942BCC1C8700C52249 /* ViewSamples.swift */,
 			);
 			path = Samples;
 			sourceTree = "<group>";
@@ -337,7 +346,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6BDB98C2BCBEAAA00C52249 /* Entry.swift in Sources */,
+				C6BDB9972BCC1CBC00C52249 /* Env.swift in Sources */,
 				C6BDB9912BCC0A2000C52249 /* ComposedSlide.swift in Sources */,
+				C6BDB9932BCC19F100C52249 /* CodeSamples.swift in Sources */,
 				C63FB3B62BB87B62002C22D6 /* StatementModern.swift in Sources */,
 				C6BDB98F2BCBEB8000C52249 /* IdentitySample.swift in Sources */,
 				C6A15AA72BBC2DFA00371F19 /* StatementSlide.swift in Sources */,
@@ -347,6 +358,7 @@
 				C63FB3DF2BB9A907002C22D6 /* DesignProps.swift in Sources */,
 				C6BDB9862BC9D0E600C52249 /* SectionStart.swift in Sources */,
 				C6A15AA32BBC205400371F19 /* SlideView.swift in Sources */,
+				C6BDB9952BCC1C8700C52249 /* ViewSamples.swift in Sources */,
 				C60B572A2BC1519C006DD219 /* CodeHighlighter.swift in Sources */,
 				C6A15AA52BBC263300371F19 /* BulletsSlide.swift in Sources */,
 				C63FB3B42BB87B62002C22D6 /* App.swift in Sources */,
