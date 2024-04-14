@@ -9,11 +9,7 @@ import SwiftUI
 import HighlightSwift
 
 struct SwiftCodeHighlightView: View {
-	@State var code: String
-
-	init(code: String) {
-		self.code = code
-	}
+	let code: AttributedString
 
 	@Environment(\.debug) var debug
 
@@ -34,9 +30,9 @@ struct SwiftCodeHighlightView: View {
 	// контрастная комплиментарная: .gradient
 
 	var codeView: some View {
-		CodeText(code)
-			.codeTextColors(.theme(.gradient))
-			.codeTextMode(.language(.swift))
+		Text(code)
+//			.codeTextColors(.theme(.gradient))
+//			.codeTextMode(.language(.swift))
 			.fontStyle(.code)
 			//.blendMode(debug ? BlendMode.color : BlendMode.normal)
 			.blendMode(.screen)

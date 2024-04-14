@@ -6,7 +6,8 @@
 //
 
 // not index
-let initialSlize = 2
+let initialSlize = 1
+let codeSamplesToWarmUp: [KeyPath<Samples, String>] = [\.identity1]
 
 import SwiftUI
 
@@ -152,6 +153,7 @@ struct Presentation: View {
 	}
 
 	@Environment(\.highlight) var highlight
+	@State var codeSamples = Samples()
 
 	var body: some View {
 		VStack(spacing: 0) {
@@ -182,8 +184,18 @@ struct Presentation: View {
 		}.onAppear {
 			Task.detached {
 				// warum up cache
-				_ = try await highlight.attributed(sample1)
+				for kp in codeSamplesToWarmUp {
+					let result = try await highlight.attributed(
+						codeSamples[keyPath: kp],
+						language: .swift,
+						colors: .dark(.gradient)
+					)
+					await MainActor.run {
+						codeSamples.update(kp, with: result)
+					}
+					// print(result)
+				}
 			}
-		}
+		}.environment(\.codeSamples, codeSamples)
 	}
 }
