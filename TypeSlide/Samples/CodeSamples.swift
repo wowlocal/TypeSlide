@@ -161,7 +161,7 @@ var body: some View {
 var body: some View {
 	color.transition(.asymmetric(
 		insertion: .offset(degrees: -45),
-		removal: .offset(degrees: 135)
+		removal: .offset(degrees: 90)
 	))
 }
 """ }

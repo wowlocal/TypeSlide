@@ -158,7 +158,7 @@ struct TransitionAsymmetric: View {
 				.transition(
 					.asymmetric(
 						insertion: .offset(degrees: -45),
-						removal: .offset(degrees: 135)
+						removal: .offset(degrees: 90)
 					)
 				)
 			Button("animate") {
