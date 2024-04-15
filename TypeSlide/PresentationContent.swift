@@ -102,6 +102,8 @@ let slides: [SlideType] = [
 	.shakeHand,
 	.hipsterStatement("Как это работает?"),
 	.codeMultistep([\.keyframe0, \.keyframe1, \.keyframe2, \.keyframeAll]),
+	// --------------------------------------------------------------- //
+	// . animatable data ctfont showcase
 ]
 
 import SwiftUI
