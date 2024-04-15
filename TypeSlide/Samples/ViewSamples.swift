@@ -89,5 +89,47 @@ var transitionBouncy: CodePreview<some View> {
 	}
 }
 
-
 // --------------------------------------------------------------- //
+
+var timingCurveAnimate0: CodePreview<some View> {
+	CodePreview(code: \.transitionBouncy) {
+		SpringExample()
+		//AnimateCircle(animation: .easeIn)
+	}
+}
+
+var timingCurveAnimate1: CodePreview<some View> {
+	CodePreview(code: \.transitionBouncy) {
+		AnimateCircle(animation: .easeIn)
+	}
+}
+
+var timingCurveAnimate2: CodePreview<some View> {
+	CodePreview(code: \.transitionBouncy) {
+		AnimateCircle(animation: .easeInOut)
+	}
+}
+
+var springAnimate0: CodePreview<some View> {
+	CodePreview(code: \.transitionBouncy) {
+		AnimateCircle(animation: .spring)
+	}
+}
+
+var springAnimate1: CodePreview<some View> {
+	CodePreview(code: \.transitionBouncy) {
+		AnimateCircle(animation: .easeIn)
+	}
+}
+
+var higherOrderAnimate0: CodePreview<some View> {
+	CodePreview(code: \.higherOrderAnimate0) {
+		AnimateCircle(animation: .easeIn)
+	}
+}
+
+var higherOrderAnimate1: CodePreview<some View> {
+	CodePreview(code: \.higherOrderAnimate1) {
+		AnimateCircle(animation: .easeIn)
+	}
+}

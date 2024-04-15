@@ -226,7 +226,6 @@ extension AnyTransition {
 	static func offset(degrees: Double, distance: Double = 1000) -> AnyTransition {
 		let angleRadians = degrees * .pi / 180
 
-		// Calculate x and y coordinates
 		let x = distance * cos(angleRadians)
 		let y = distance * sin(angleRadians)
 

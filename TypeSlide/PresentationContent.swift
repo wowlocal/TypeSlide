@@ -8,7 +8,7 @@
 import Foundation
 
 // not index
-let initialSlize = 20
+let initialSlize = 24
 let codeSamplesToWarmUp: [KeyPath<Samples, String>] = [
 	\.identity1,
 	 \.identity0,
@@ -24,6 +24,13 @@ let codeSamplesToWarmUp: [KeyPath<Samples, String>] = [
 	 \.transitionSymmetric,
 	 \.transitionAsymmetric,
 	 \.transitionBouncy,
+	 \.timingCurveAnimate0,
+	 \.timingCurveAnimate1,
+	 \.timingCurveAnimate2,
+	 \.springAnimate0,
+	 \.springAnimate1,
+	 \.higherOrderAnimate0,
+	 \.higherOrderAnimate1,
 ]
 
 let slides: [SlideType] = [
@@ -58,16 +65,20 @@ let slides: [SlideType] = [
 	.statement(title: "Добавим специй", subtitle: ".bouncy() .combined(with: .opacity)"), // 20
 	.transitionBouncy, // 21
 	// --------------------------------------------------------------- //
-	.bullets(title: "Bullet lists",
+	.title(".animation", subtitle: "Функции анимирования"), // 22
+	.bullets(title: "Animation taxonomy",
 			 bullets: [
-				"Increase cognitive load",
-				"Look and feel robotic",
-				"Are distracting",
-				"Bore the hell out of everyone",
-				"Make you predictable",
-				"Sound and look like notes",
-				"Should be notes"
+				"Timing curve",
+				"Spring",
+				"Higher order animations",
 			 ]),
+	.timingCurveAnimate0, // 23
+	.timingCurveAnimate1, // 24
+	.timingCurveAnimate2,
+	.springAnimate0,
+	.springAnimate1,
+	.higherOrderAnimate0,
+	.higherOrderAnimate1,
 	.hipsterStatement("statement"),
 	.statement(title: "Hello", subtitle: "World"),
 	.statement(title: "Hello"),
@@ -109,6 +120,20 @@ extension Presentation {
 			transitionAsymmetric
 		case .transitionBouncy:
 			transitionBouncy
+		case .timingCurveAnimate0:
+			timingCurveAnimate0
+		case .timingCurveAnimate1:
+			timingCurveAnimate1
+		case .timingCurveAnimate2:
+			timingCurveAnimate2
+		case .springAnimate0:
+			springAnimate0
+		case .springAnimate1:
+			springAnimate1
+		case .higherOrderAnimate0:
+			higherOrderAnimate0
+		case .higherOrderAnimate1:
+			higherOrderAnimate1
 		}
 	}
 }
@@ -129,4 +154,11 @@ enum SlideType {
 	case transitionSymmetric
 	case transitionAsymmetric
 	case transitionBouncy
+	case timingCurveAnimate0
+	case timingCurveAnimate1
+	case timingCurveAnimate2
+	case springAnimate0
+	case springAnimate1
+	case higherOrderAnimate0
+	case higherOrderAnimate1
 }

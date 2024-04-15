@@ -179,4 +179,25 @@ var body: some View {
 }
 """ }
 
+	var timingCurveAnimate0: String { """
+""" }
+
+	var timingCurveAnimate1: String { """
+""" }
+
+	var timingCurveAnimate2: String { """
+""" }
+
+	var springAnimate0: String { """
+""" }
+
+	var springAnimate1: String { """
+""" }
+
+	var higherOrderAnimate0: String { """
+""" }
+
+	var higherOrderAnimate1: String { """
+""" }
+
 }
