@@ -44,6 +44,8 @@ struct WhatIsIdentity1: View {
 	}
 }
 
+// --------------------------------------------------------------- //
+
 struct RectSomePreview: View {
 	@State var toggle: Bool = true
 
@@ -109,45 +111,13 @@ struct RectExplicitId: View {
 	}
 }
 
+// --------------------------------------------------------------- //
 
-/*
- Button("animate") {
-	 withAnimation {
-		 animate.toggle()
-	 }
- }.keyboardShortcut(KeyEquivalent("a"), modifiers: [.control])
-
-
-
- var size: CGFloat {
-		toggle ? 300 : 200
-	}
-
-	var correctlyAnimating: Color {
-		toggle ? .orange : .green
-	}
-
-	var try2: some View {
-		if toggle {
-			//View1().id(2)
-			Color.orange.frame(width: 300, height: 300)//.id("1")
-		} else {
-			//View2().id(2)
-			Color.green.frame(width: 200, height: 200)//.id("1")
-		}
-	}
+struct TransitionSymmetric: View {
+	@State var toggle: Bool = true
 
 	@ViewBuilder
-	var try4: some View {
-		if toggle {
-			View1()
-		} else {
-			View2()
-		}
-	}
-
-	@ViewBuilder
-	var try3: some View {
+	var color: some View {
 		if toggle {
 			Color.orange
 				.frame(width: 300, height: 300)
@@ -156,4 +126,111 @@ struct RectExplicitId: View {
 				.frame(width: 200, height: 200)
 		}
 	}
+
+	var body: some View {
+		color
+			.transition(.offset(CGSize(width: 800, height: 0)))
+			.onAppear {
+				withAnimation(Animation.default.delay(1.5).repeatCount(5)) {
+					self.toggle.toggle()
+				}
+			}
+	}
+}
+
+struct TransitionAsymmetric: View {
+	@State var toggle: Bool = true
+
+	@ViewBuilder
+	var color: some View {
+		if toggle {
+			Color.orange
+				.frame(width: 300, height: 300)
+		} else {
+			Color.green
+				.frame(width: 200, height: 200)
+		}
+	}
+
+	var body: some View {
+		ZStack {
+			color
+				.transition(
+					.asymmetric(
+						insertion: .offset(degrees: -45),
+						removal: .offset(degrees: 135)
+					)
+				)
+			Button("animate") {
+				withAnimation {
+					toggle.toggle()
+				}
+			}
+			.opacity(0)
+			.keyboardShortcut(KeyEquivalent("a"), modifiers: [.control])
+		}
+	}
+}
+
+struct TransitionAsymmetricBouncy: View {
+	@State var toggle: Bool = true
+
+	@ViewBuilder
+	var color: some View {
+		if toggle {
+			Color.orange
+				.frame(width: 300, height: 300)
+		} else {
+			Color.green
+				.frame(width: 200, height: 200)
+		}
+	}
+
+	var body: some View {
+		ZStack {
+			color
+				.animation(.bouncy(duration: 0.4, 
+								   extraBounce: 0.2),
+						   value: toggle)
+				.transition(
+					.asymmetric(
+						insertion: .offset(degrees: -45, distance: 500),
+						removal: .offset(degrees: 135, distance: 500)
+					).combined(with: .opacity)
+				)
+			Button("animate") {
+				withAnimation {
+					toggle.toggle()
+				}
+			}
+			.opacity(0)
+			.keyboardShortcut(KeyEquivalent("a"), modifiers: [.control])
+		}
+	}
+}
+
+
+/*
+ .overlay {
+	 Button("animate") {
+		 withAnimation {
+			 toggle.toggle()
+		 }
+	 }
+	 .opacity(0)
+	 .keyboardShortcut(KeyEquivalent("a"), modifiers: [.control])
+ }
  */
+
+extension AnyTransition {
+	static func offset(degrees: Double, distance: Double = 1000) -> AnyTransition {
+		let angleRadians = degrees * .pi / 180
+
+		// Calculate x and y coordinates
+		let x = distance * cos(angleRadians)
+		let y = distance * sin(angleRadians)
+
+		return .offset(CGSize(width: x, height: y))
+	}
+}
+

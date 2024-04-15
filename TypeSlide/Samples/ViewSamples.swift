@@ -64,16 +64,30 @@ var possibleAnyView: JustCode {
 
 // --------------------------------------------------------------- //
 
-var codeSample4: CodePreview<some View> {
-	//CodePreview(preview: Color.red.frame(width: 300, height: 300), code: sample1)
-	CodePreview(code: \.identity1) {
-		WhatIsIdentity1()
+var transitionSymmetricIntro: JustCode {
+	JustCode(code: [
+		\.transitionSymmetricIntro0,
+		\.transitionSymmetricIntro1,
+	])
+}
+
+var transitionSymmetric: CodePreview<some View> {
+	CodePreview(code: \.transitionSymmetric) {
+		TransitionSymmetric()
 	}
 }
 
-var codeSample5: CodePreview<some View> {
-	//CodePreview(preview: Color.red.frame(width: 300, height: 300), code: sample1)
-	CodePreview(code: \.identity1) {
-		WhatIsIdentity1()
+var transitionAsymmetric: CodePreview<some View> {
+	CodePreview(code: \.transitionAsymmetric) {
+		TransitionAsymmetric()
 	}
 }
+
+var transitionBouncy: CodePreview<some View> {
+	CodePreview(code: \.transitionBouncy) {
+		TransitionAsymmetricBouncy()
+	}
+}
+
+
+// --------------------------------------------------------------- //

@@ -32,6 +32,8 @@ var body: some View {
 }
 """ }
 
+	// --------------------------------------------------------------- //
+
 	var rectSome: String { """
 var color: some View {
 	if toggle {
@@ -68,6 +70,8 @@ var color: some View {
 }
 """ }
 
+	// --------------------------------------------------------------- //
+
 	var impossibleAnyView: String { """
 struct Green: View { var body: some View { Color.green } }
 struct Orange: View { var body: some View { Color.orange } }
@@ -84,6 +88,8 @@ var color: some View {
 	}
 }
 """ }
+
+	// --------------------------------------------------------------- //
 
 	var possibleAnyView0: String { """
 struct Green: View { var body: some View { Color.green } }
@@ -122,6 +128,54 @@ var color: any View {
 	} else {
 		Orange()
 	}
+}
+""" }
+
+	// --------------------------------------------------------------- //
+
+	var transitionSymmetricIntro0: String { """
+@ViewBuilder
+var color: some View {
+	if toggle {
+		Color.orange.frame(width: 300, height: 300)
+	} else {
+		Color.green.frame(width: 200, height: 200)
+	}
+}
+
+var body: some View { color }
+""" }
+
+	var transitionSymmetricIntro1: String { """
+var body: some View { color }
+""" }
+
+	var transitionSymmetric: String { """
+var body: some View { 
+	color
+		.transition(.slide)
+}
+""" }
+
+	var transitionAsymmetric: String { """
+var body: some View {
+	color.transition(.asymmetric(
+		insertion: .offset(degrees: -45),
+		removal: .offset(degrees: 135)
+	))
+}
+""" }
+
+	var transitionBouncy: String { """
+var body: some View {
+	color
+		.animation(
+			.bouncy(duration: 0.4, extraBounce: 0.2)
+		)
+		.transition(
+			.asymmetric(...)
+			.combined(with: .opacity)
+		)
 }
 """ }
 

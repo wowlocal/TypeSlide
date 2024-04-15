@@ -8,7 +8,7 @@
 import Foundation
 
 // not index
-let initialSlize = 10
+let initialSlize = 20
 let codeSamplesToWarmUp: [KeyPath<Samples, String>] = [
 	\.identity1,
 	 \.identity0,
@@ -19,18 +19,26 @@ let codeSamplesToWarmUp: [KeyPath<Samples, String>] = [
 	 \.possibleAnyView0,
 	 \.possibleAnyView1,
 	 \.possibleAnyView2,
+	 \.transitionSymmetricIntro0,
+	 \.transitionSymmetricIntro1,
+	 \.transitionSymmetric,
+	 \.transitionAsymmetric,
+	 \.transitionBouncy,
 ]
 
 let slides: [SlideType] = [
 	.title("SwiftUI анимации", subtitle: "От основ к продвинутым практикам"), // 1
+	// --------------------------------------------------------------- //
 	.identitySample0, // 2
 	.identitySample1, // 3
 	.rectSome, // 4
 	.rectAny, // 5
+	// --------------------------------------------------------------- //
 	.statement(title: "Strutural Identity"), // 6
 	.statement(title: "Strutural Identity", subtitle: "А как насчет explicit identity"), // 7
 	.rectExplicitId, // 8
 	.hipsterStatement("Типизация играет ключевую роль в определении identity"), // 9
+	// --------------------------------------------------------------- //
 	.impossibleAnyView, // 10
 	.statement(title: "", subtitle: "some View -> any View"), // 11
 	.possibleAnyView, // 12
@@ -41,8 +49,15 @@ let slides: [SlideType] = [
 				"Worse performance when not needed",
 			 ]),
 	.hipsterStatement("Not Recommended"), // 14
-
-
+	// --------------------------------------------------------------- //
+	.title(".transition", subtitle: "Анимации появления и исчезновения"), // 15
+	.transitionIntro, // 16
+	.transitionSymmetric, // 17
+	.transitionAsymmetric, // 18
+	.statement(title: "Добавим специй"), // 19
+	.statement(title: "Добавим специй", subtitle: ".bouncy() .combined(with: .opacity)"), // 20
+	.transitionBouncy, // 21
+	// --------------------------------------------------------------- //
 	.bullets(title: "Bullet lists",
 			 bullets: [
 				"Increase cognitive load",
@@ -57,8 +72,6 @@ let slides: [SlideType] = [
 	.statement(title: "Hello", subtitle: "World"),
 	.statement(title: "Hello"),
 ]
-
-
 
 import SwiftUI
 
@@ -88,10 +101,14 @@ extension Presentation {
 			impossibleAnyView
 		case .possibleAnyView:
 			code(possibleAnyView)
-		case .sample4:
-			codeSample4
-		case .sample5:
-			codeSample5
+		case .transitionIntro:
+			code(transitionSymmetricIntro)
+		case .transitionSymmetric:
+			transitionSymmetric
+		case .transitionAsymmetric:
+			transitionAsymmetric
+		case .transitionBouncy:
+			transitionBouncy
 		}
 	}
 }
@@ -108,6 +125,8 @@ enum SlideType {
 	case rectExplicitId
 	case impossibleAnyView
 	case possibleAnyView
-	case sample4
-	case sample5
+	case transitionIntro
+	case transitionSymmetric
+	case transitionAsymmetric
+	case transitionBouncy
 }
