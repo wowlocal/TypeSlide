@@ -180,18 +180,38 @@ var body: some View {
 """ }
 
 	var timingCurveAnimate0: String { """
+withAnimation(.linear) {...}
 """ }
 
 	var timingCurveAnimate1: String { """
+withAnimation(.easeInOut) {...}
 """ }
 
 	var timingCurveAnimate2: String { """
+withAnimation(.bouncy) {...}
 """ }
 
 	var springAnimate0: String { """
+withAnimation(.spring) {...}
 """ }
 
 	var springAnimate1: String { """
+Circle()
+	.position(position)
+	.animation(.spring)
+	.gesture(.onChanged { 
+		self.position = $0.location 
+	})
+""" }
+
+	var springAnimate2: String { """
+.interpolatingSpring(
+	stiffness: 80, damping: 8
+)
+""" }
+
+	var notSpringAnimate: String { """
+.easeInOut
 """ }
 
 	var higherOrderAnimate0: String { """

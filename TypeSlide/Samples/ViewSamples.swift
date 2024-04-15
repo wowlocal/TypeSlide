@@ -92,44 +92,70 @@ var transitionBouncy: CodePreview<some View> {
 // --------------------------------------------------------------- //
 
 var timingCurveAnimate0: CodePreview<some View> {
-	CodePreview(code: \.transitionBouncy) {
-		SpringExample()
-		//AnimateCircle(animation: .easeIn)
+	CodePreview(code: \.timingCurveAnimate0) {
+		SpringExample(animation: .linear)
 	}
 }
 
 var timingCurveAnimate1: CodePreview<some View> {
-	CodePreview(code: \.transitionBouncy) {
-		AnimateCircle(animation: .easeIn)
+	CodePreview(code: \.timingCurveAnimate1) {
+		SpringExample(animation: .easeInOut)
 	}
 }
 
 var timingCurveAnimate2: CodePreview<some View> {
-	CodePreview(code: \.transitionBouncy) {
-		AnimateCircle(animation: .easeInOut)
+	CodePreview(code: \.timingCurveAnimate2) {
+		SpringExample(animation: .bouncy(extraBounce: 0.2))
 	}
 }
 
 var springAnimate0: CodePreview<some View> {
-	CodePreview(code: \.transitionBouncy) {
-		AnimateCircle(animation: .spring)
+	CodePreview(code: \.springAnimate0) {
+		SpringExample(animation: .spring)
 	}
 }
 
 var springAnimate1: CodePreview<some View> {
-	CodePreview(code: \.transitionBouncy) {
-		AnimateCircle(animation: .easeIn)
+	CodePreview(code: \.springAnimate1) {
+		HStack {
+			Spacer(minLength: 400) // crutch
+			MagnetizedCircleView(
+				animation: .spring
+			)
+		}
+	}
+}
+
+var springAnimate2: CodePreview<some View> {
+	CodePreview(code: \.springAnimate2) {
+		HStack {
+			Spacer(minLength: 400) // crutch
+			MagnetizedCircleView(
+				animation: .interpolatingSpring(stiffness: 80, damping: 8)
+			)
+		}
+	}
+}
+
+var notSpringAnimate: CodePreview<some View> {
+	CodePreview(code: \.notSpringAnimate) {
+		HStack {
+			Spacer(minLength: 400) // crutch
+			MagnetizedCircleView(
+				animation: .easeInOut
+			)
+		}
 	}
 }
 
 var higherOrderAnimate0: CodePreview<some View> {
 	CodePreview(code: \.higherOrderAnimate0) {
-		AnimateCircle(animation: .easeIn)
+		Color.clear
 	}
 }
 
 var higherOrderAnimate1: CodePreview<some View> {
 	CodePreview(code: \.higherOrderAnimate1) {
-		AnimateCircle(animation: .easeIn)
+		Color.clear
 	}
 }

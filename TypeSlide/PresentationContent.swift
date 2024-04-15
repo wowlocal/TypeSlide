@@ -8,7 +8,7 @@
 import Foundation
 
 // not index
-let initialSlize = 24
+let initialSlize = 27
 let codeSamplesToWarmUp: [KeyPath<Samples, String>] = [
 	\.identity1,
 	 \.identity0,
@@ -29,6 +29,8 @@ let codeSamplesToWarmUp: [KeyPath<Samples, String>] = [
 	 \.timingCurveAnimate2,
 	 \.springAnimate0,
 	 \.springAnimate1,
+	 \.springAnimate2,
+	 \.notSpringAnimate,
 	 \.higherOrderAnimate0,
 	 \.higherOrderAnimate1,
 ]
@@ -74,14 +76,24 @@ let slides: [SlideType] = [
 			 ]),
 	.timingCurveAnimate0, // 23
 	.timingCurveAnimate1, // 24
-	.timingCurveAnimate2,
-	.springAnimate0,
-	.springAnimate1,
+	.springAnimate0, // 26
+	.timingCurveAnimate2, // bouncy
+	.springAnimate1, // 27
+	.springAnimate2,
+	.notSpringAnimate,
 	.higherOrderAnimate0,
 	.higherOrderAnimate1,
-	.hipsterStatement("statement"),
-	.statement(title: "Hello", subtitle: "World"),
-	.statement(title: "Hello"),
+	.bullets(title: ".animation",
+			 bullets: [
+				"Spring для интерактивных элементов",
+				"Linear для прогресс индикаторов",
+				"EaseInOut отстой",
+			 ]),
+	// --------------------------------------------------------------- //
+	.hipsterStatement("но если этого мало..."),
+	.statement(title: "CustomAnimation", subtitle: "вам не пригодится"),
+	// just code показать протокол
+	.statement(title: "Не будем тратить время"),
 ]
 
 import SwiftUI
@@ -130,6 +142,10 @@ extension Presentation {
 			springAnimate0
 		case .springAnimate1:
 			springAnimate1
+		case .springAnimate2:
+			springAnimate2
+		case .notSpringAnimate:
+			notSpringAnimate
 		case .higherOrderAnimate0:
 			higherOrderAnimate0
 		case .higherOrderAnimate1:
@@ -159,6 +175,8 @@ enum SlideType {
 	case timingCurveAnimate2
 	case springAnimate0
 	case springAnimate1
+	case springAnimate2
+	case notSpringAnimate
 	case higherOrderAnimate0
 	case higherOrderAnimate1
 }

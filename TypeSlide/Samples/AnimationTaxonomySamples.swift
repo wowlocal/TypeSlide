@@ -7,56 +7,110 @@
 
 import SwiftUI
 
-struct AnimateCircle: View {
-	@State var trigger = false
+struct MagnetView: View {
+	var body: some View {
+		VStack {
+			Rectangle()
+				.fill(LinearGradient(
+					gradient: Gradient(colors: [Color.red, Color.gray]),
+					startPoint: .top, endPoint: .bottom)
+				)
+				.frame(width: 30, height: 20)
+			Rectangle()
+				.fill(LinearGradient(
+					gradient: Gradient(colors: [Color.gray, Color.blue]),
+					startPoint: .top, endPoint: .bottom)
+				)
+				.frame(width: 30, height: 20)
+		}
+		.cornerRadius(6)
+		.shadow(radius: 4)
+	}
+}
+
+
+struct MagnetizedCircleView: View {
+	let positionA = CGPoint(x: 0, y: 100)
+	let positionB = CGPoint(x: 0, y: 800)
+
+	@State private var currentPosition: CGPoint = CGPoint(x: 0, y: 100)
+	@State private var isDragging = false
 
 	let animation: Animation
 
 	var body: some View {
-		VStack {
+		ZStack {
 			Circle()
-				.opacity(trigger ? 1.0 : 0.5)
-				.animation(animation, value: trigger)
-
-			Circle()
-				.opacity(trigger ? 1.0 : 0.5)
-				.animation(animation, value: trigger)
-
-			Button("Toggle") {
-				trigger.toggle()
-			}
+				.fill(.white)
+				.frame(width: 200, height: 200)
+				.position(currentPosition)
+				.animation(animation, value: currentPosition)
+				.shadow(color: self.isDragging ? Color.blue.opacity(0.7) : Color.clear, radius: 30, x: 0, y: 0)
+				.gesture(
+					DragGesture()
+						.onChanged { value in
+							self.isDragging = true
+							self.currentPosition = value.location
+						}
+						.onEnded { value in
+							self.isDragging = false
+							// Calculate which position is closer when the gesture ends
+							let distanceToA = distance(from: value.location, to: positionA)
+							let distanceToB = distance(from: value.location, to: positionB)
+							if distanceToA < distanceToB {
+								self.currentPosition = positionA
+							} else {
+								self.currentPosition = positionB
+							}
+						}
+				)
+			MagnetView()
+				.position(positionA)
+				.allowsHitTesting(false)
+			MagnetView()
+				.position(positionB)
+				.allowsHitTesting(false)
 		}
 	}
-}
 
+	private func distance(from source: CGPoint, to destination: CGPoint) -> CGFloat {
+		let xDist = source.x - destination.x
+		let yDist = source.y - destination.y
+		return CGFloat(sqrt((xDist * xDist) + (yDist * yDist)))
+	}
+}
 
 struct SpringExample: View {
 
 	@State var toggle: Bool = true
 
+	let animation: Animation
+
 	var body: some View {
 		VStack {
 			SpringSnakeShape()
-				.stroke(style: StrokeStyle(lineWidth: 5, lineCap: .round, lineJoin: .round))
+				.stroke(style: StrokeStyle(lineWidth: toggle ? 7 : 5, lineCap: .round, lineJoin: .round))
 				.foregroundColor(.white)
-				.frame(height: toggle ? 150 : 500)
+				.frame(height: toggle ? 150 : 650)
+				.frame(width: 240)
 				.overlay(
 					RoundedRectangle(cornerRadius: 25)
 						.fill(Color.white)
-						.frame(width: 150, height: 300)
-						.offset(x: 0, y: 290), // Adjust this to position the rectangle correctly
+						.frame(width: 150, height: 200)
+						.offset(x: 0, y: 190),
 					alignment: .bottom
 				)
 			Spacer()
 		}
 		.overlay(
 			Button("animate") {
-				withAnimation {
+				withAnimation(animation) {
 					toggle.toggle()
 				}
 			}
 			.opacity(0)
-			.keyboardShortcut(KeyEquivalent("a"), modifiers: [.control])		)
+			.keyboardShortcut(KeyEquivalent("a"), modifiers: [.control])
+		)
 	}
 }
 
@@ -69,7 +123,7 @@ struct SpringSnakeShape: Shape {
 		path.move(to: start)
 
 		// Number of waves in the snake-like spring
-		let numberOfWaves = 4
+		let numberOfWaves = 8
 		// Calculate the height of each wave
 		let waveHeight = rect.height / CGFloat(numberOfWaves)
 		// Amplitude of the waves (horizontal shift of the curves)

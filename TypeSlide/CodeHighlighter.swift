@@ -34,6 +34,7 @@ struct SwiftCodeHighlightView: View {
 //			.codeTextColors(.theme(.gradient))
 //			.codeTextMode(.language(.swift))
 			.fontStyle(.code)
+			.frame(minWidth: 800)
 			//.blendMode(debug ? BlendMode.color : BlendMode.normal)
 			.blendMode(.screen)
 			.padding(50)
