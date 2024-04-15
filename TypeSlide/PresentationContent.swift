@@ -8,7 +8,7 @@
 import Foundation
 
 // not index
-let initialSlize = 27
+let initialSlize = 37
 let codeSamplesToWarmUp: [KeyPath<Samples, String>] = [
 	\.identity1,
 	 \.identity0,
@@ -95,6 +95,7 @@ let slides: [SlideType] = [
 	.statement(title: "CustomAnimation", subtitle: "вам не пригодится"),
 	.customAnimationProtocol,
 	.statement(title: "Не будем тратить время"),
+	.statement(title: "", subtitle: "Погнали к keyframed анимациям"),
 	// --------------------------------------------------------------- //
 ]
 
