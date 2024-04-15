@@ -29,7 +29,7 @@ struct ShakeHand: View {
 						.scaleEffect(frame.scale)
 						.rotationEffect(frame.rotation, anchor: .bottom)
 						.offset(y: frame.offsetY)
-				} keyframes: { frame in
+				} keyframes: { _ in
 					KeyframeTrack(\.offsetY) {
 						CubicKeyframe(10, duration: 0.15)
 						SpringKeyframe(-100, duration: 0.3, spring: .bouncy)

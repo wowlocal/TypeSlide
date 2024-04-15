@@ -252,5 +252,50 @@ func velocity<V>(
 ) -> VectorArithmetic?
 """ }
 
+	// --------------------------------------------------------------- //
+
+	var keyframe0: String { """
+	 KeyframeTrack(\\.ffsetY) {
+		 CubicKeyframe(10, duration: 0.15)
+		 SpringKeyframe(-100, duration: 0.3, spring: .bouncy)
+		 CubicKeyframe(-100, duration: 0.45)
+		 SpringKeyframe(0, duration: 0.3, spring: .bouncy)
+	 }
+""" }
+
+	var keyframe1: String { """
+	KeyframeTrack(\\.scale) {
+	  CubicKeyframe(0.9, duration: 0.15)
+	  CubicKeyframe(1.2, duration: 0.3)
+	  CubicKeyframe(1.2, duration: 0.3)
+	  CubicKeyframe(1, duration: 0.3)
+	}
+""" }
+
+	var keyframe2: String { """
+	 KeyframeTrack(\\.rotation) {
+		 CubicKeyframe(.zero, duration: 0.15)
+		 CubicKeyframe(.zero, duration: 0.3)
+		 CubicKeyframe(.init(degrees: -10), duration: 0.1)
+		 CubicKeyframe(.init(degrees: 10), duration: 0.1)
+		 CubicKeyframe(.init(degrees: -10), duration: 0.1)
+		 CubicKeyframe(.init(degrees: 0), duration: 0.15)
+	 }
+""" }
+
+
+	var keyframeAll: String { """
+.keyframeAnimator() { view, frame in
+	view
+		.scaleEffect(frame.scale)
+		.rotationEffect(frame.rotation, anchor: .bottom)
+		.offset(y: frame.offsetY)
+} keyframes: { _ in
+	 KeyframeTrack(\\.offsetY) { ... }
+	 KeyframeTrack(\\.scale) { ... }
+	 KeyframeTrack(\\.rotation) { ... }
+}
+""" }
+
 }
 

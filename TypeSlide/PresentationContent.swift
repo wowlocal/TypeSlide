@@ -35,6 +35,7 @@ let codeSamplesToWarmUp: [KeyPath<Samples, String>] = [
 	 \.customAnimationProtocol0,
 	 \.customAnimationProtocol1,
 	 \.customAnimationProtocol2,
+	 \.keyframe0, \.keyframe1, \.keyframe2, \.keyframeAll,
 ]
 
 let slides: [SlideType] = [
@@ -99,6 +100,8 @@ let slides: [SlideType] = [
 	.statement(title: "", subtitle: "Погнали к keyframed анимациям"),
 	// --------------------------------------------------------------- //
 	.shakeHand,
+	.hipsterStatement("Как это работает?"),
+	.codeMultistep([\.keyframe0, \.keyframe1, \.keyframe2, \.keyframeAll]),
 ]
 
 import SwiftUI
@@ -157,6 +160,8 @@ extension Presentation {
 			code(customAnimationProtocol)
 		case .shakeHand:
 			ShakeHand()
+		case .codeMultistep(let samples):
+			code(JustCode(code: samples))
 		}
 	}
 }
@@ -187,4 +192,5 @@ enum SlideType {
 	case higherOrderAnimate
 	case customAnimationProtocol
 	case shakeHand
+	case codeMultistep([KeyPath<Samples, String>])
 }
