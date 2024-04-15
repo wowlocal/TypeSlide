@@ -214,10 +214,43 @@ Circle()
 .easeInOut
 """ }
 
-	var higherOrderAnimate0: String { """
+	var higherOrderAnimate: String { """
+// Changes the duration of an animation by adjusting its speed
+.speed()
+// Delays the start of the animation by the specified number of seconds
+.delay()
+// Repeats the animation for a specific number of times
+.repeatCount(:autoreverses:)
+// Repeats the animation for the lifespan of the view
+.repeatForever(autoreverses:)
 """ }
 
-	var higherOrderAnimate1: String { """
+	// --------------------------------------------------------------- //
+
+	var customAnimationProtocol0: String { """
+func animate<V>(
+	value: V,
+	time: TimeInterval,
+	context: inout AnimationContext<V>
+) -> VectorArithmetic
+""" }
+
+	var customAnimationProtocol1: String { """
+func shouldMerge<V>(
+	previous: Animation,
+	value: V,
+	time: TimeInterval,
+	context: inout AnimationContext<V>
+) -> Bool
+""" }
+
+	var customAnimationProtocol2: String { """
+func velocity<V>(
+	value: V,
+	time: TimeInterval,
+	context: AnimationContext<V>
+) -> VectorArithmetic?
 """ }
 
 }
+

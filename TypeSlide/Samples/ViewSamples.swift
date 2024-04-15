@@ -148,14 +148,21 @@ var notSpringAnimate: CodePreview<some View> {
 	}
 }
 
-var higherOrderAnimate0: CodePreview<some View> {
-	CodePreview(code: \.higherOrderAnimate0) {
-		Color.clear
+var higherOrderAnimate: some View {
+	VStack(alignment: .leading) {
+		TitleSubtitleModern(title: "", subtitle: "Higher order animations")
+		Spacer()
+		JustCode(code: \.higherOrderAnimate)
+		Spacer()
 	}
 }
 
-var higherOrderAnimate1: CodePreview<some View> {
-	CodePreview(code: \.higherOrderAnimate1) {
-		Color.clear
-	}
+// --------------------------------------------------------------- //
+
+var customAnimationProtocol: JustCode {
+	JustCode(code: [
+		\.customAnimationProtocol0,
+		\.customAnimationProtocol1,
+		\.customAnimationProtocol2,
+	])
 }
