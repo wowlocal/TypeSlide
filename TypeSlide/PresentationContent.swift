@@ -40,6 +40,7 @@ let codeSamplesToWarmUp: [KeyPath<Samples, String>] = [
 let slides: [SlideType] = [
 	.title("SwiftUI анимации", subtitle: "От основ к продвинутым практикам"), // 1
 	// --------------------------------------------------------------- //
+	.shakeHand,
 	.identitySample0, // 2
 	.identitySample1, // 3
 	.rectSome, // 4
@@ -97,6 +98,7 @@ let slides: [SlideType] = [
 	.statement(title: "Не будем тратить время"),
 	.statement(title: "", subtitle: "Погнали к keyframed анимациям"),
 	// --------------------------------------------------------------- //
+	.shakeHand,
 ]
 
 import SwiftUI
@@ -153,6 +155,8 @@ extension Presentation {
 			higherOrderAnimate
 		case .customAnimationProtocol:
 			code(customAnimationProtocol)
+		case .shakeHand:
+			ShakeHand()
 		}
 	}
 }
@@ -182,4 +186,5 @@ enum SlideType {
 	case notSpringAnimate
 	case higherOrderAnimate
 	case customAnimationProtocol
+	case shakeHand
 }
