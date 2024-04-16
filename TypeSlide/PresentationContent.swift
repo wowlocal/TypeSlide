@@ -40,6 +40,7 @@ let codeSamplesToWarmUp: [KeyPath<Samples, String>] = [
 	 \.keyframe0, \.keyframe1, \.keyframe2, \.keyframeAll,
 	 \.animatableText0, \.animatableText1,
 	 \.metalShowcaseLayerEffect, \.metalShowcase,
+	 \.frutiaAnimateCode0,
 ]
 
 let slides: [SlideType] = [
@@ -191,9 +192,7 @@ extension Presentation {
 		case .frutiaShowcase:
 			ZStack {
 				JustCode(code: [
-					\.customAnimationProtocol0,
-					 \.customAnimationProtocol1,
-					 \.customAnimationProtocol2,
+					\.frutiaAnimateCode0,
 				])
 				.padding(.leading, -700)
 				FrutiaShowcase()

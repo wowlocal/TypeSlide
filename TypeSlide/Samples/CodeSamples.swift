@@ -345,5 +345,16 @@ body
 }
 """ }
 
+
+	var frutiaAnimateCode0: String { """
+var progress: Double
+
+var animatableData: Double {
+ get { progress }
+ set { progress = newValue }
+}
+...
+CODE PLACEHOLDER
+""" }
 }
 
