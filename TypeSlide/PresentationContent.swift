@@ -105,7 +105,8 @@ let slides: [SlideType] = [
 	// --------------------------------------------------------------- //
 	// . animatable data ctfont showcase
 	.title("Как анимировать текст?", subtitle: "зависит от контекста"),
-	.progressIndicatorTextShowcase
+	.progressIndicatorTextShowcase,
+	.typewriterTextShowcase,
 ]
 
 import SwiftUI
@@ -168,6 +169,8 @@ extension Presentation {
 			code(JustCode(code: samples))
 		case .progressIndicatorTextShowcase:
 			ProgressIndicatorText()
+		case .typewriterTextShowcase:
+			TypingTextView(text: "A very bad quack might jinx zippy fowls")
 		}
 	}
 }
@@ -200,6 +203,7 @@ enum SlideType {
 	case shakeHand
 	case codeMultistep([KeyPath<Samples, String>])
 	case progressIndicatorTextShowcase
+	case typewriterTextShowcase
 }
 
 
