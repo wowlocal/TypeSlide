@@ -21,11 +21,13 @@ struct ProgressIndicatorText: View {
 		.foregroundColor(.white)
 		.frame(maxWidth: .infinity, alignment: .leading)
 		.onAppear {
-			withAnimation(Animation.easeInOut(duration: 5.0)) {
+			withAnimation(Animation.easeInOut(duration: 3)) {
 				self.progress = 90
 			} completion: {
-				withAnimation(.easeInOut(duration: 3.0)) {
+				withAnimation(.easeInOut(duration: 2)) {
 					self.progress = 100
+				} completion: {
+					withAnimation(.spring.speed(0.2).delay(1)) { self.progress = 146 }
 				}
 			}
 		}
