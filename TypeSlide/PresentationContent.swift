@@ -8,7 +8,7 @@
 import Foundation
 
 // not index
-let initialSlize = 42
+let initialSlize = 49
 let codeSamplesToWarmUp: [KeyPath<Samples, String>] = [
 	\.identity1,
 	 \.identity0,
@@ -36,6 +36,7 @@ let codeSamplesToWarmUp: [KeyPath<Samples, String>] = [
 	 \.customAnimationProtocol1,
 	 \.customAnimationProtocol2,
 	 \.keyframe0, \.keyframe1, \.keyframe2, \.keyframeAll,
+	 \.animatableText0, \.animatableText1
 ]
 
 let slides: [SlideType] = [
@@ -103,12 +104,15 @@ let slides: [SlideType] = [
 	.hipsterStatement("Как это работает?"),
 	.codeMultistep([\.keyframe0, \.keyframe1, \.keyframe2, \.keyframeAll]),
 	// --------------------------------------------------------------- //
-	// . animatable data ctfont showcase
 	.title("Как анимировать текст?", subtitle: "зависит от контекста"),
 	.progressIndicatorTextShowcase,
 	.typewriterTextShowcase,
+	.statement(title: "Animatable", subtitle: "основа любой анимации"),
+	.codeMultistep([\.animatableText0, \.animatableText1]),
 	.hipsterStatement("Можно упороться в CTFontCreatePathForGlyph"),
 	.hipsterStatement("и анимировать текст по контуру"),
+	// --------------------------------------------------------------- //
+	.title("Комбинируя всё", subtitle: "переходы между экранами"),
 ]
 
 import SwiftUI

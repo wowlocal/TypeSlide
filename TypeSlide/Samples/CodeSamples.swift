@@ -297,5 +297,31 @@ func velocity<V>(
 }
 """ }
 
+	var animatableText0: String { """
+var progress: Double
+
+var animatableData: Double {
+ get { progress }
+ set { progress = newValue }
+}
+...
+let visibleLength = progress * text.count
+let visibleText = text.prefix(visibleLength)
+""" }
+
+	var animatableText1: String { """
+ struct Progress: View, Animatable {
+	 var progress: Int
+	 var animatableData: Double {
+		 get { Double(progress) / 100 }
+		 set { progress = Int(newValue * 100) }
+	 }
+
+	 var body: some View {
+		 Text("\\(progress) %")
+	 }
+ }
+""" }
+
 }
 
