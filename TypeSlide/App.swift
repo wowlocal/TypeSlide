@@ -165,10 +165,12 @@ struct Presentation: View {
 		}.onAppear {
 			Task.detached {
 				// warum up cache
+				var idx = 0
 				for kp in codeSamplesToWarmUp {
+					idx += 1
 					let result = try await highlight.attributed(
 						codeSamples[keyPath: kp],
-						language: .swift,
+						language: idx == metalCodeIdx ? .cPlusPlus : .swift,
 						colors: .dark(.gradient)
 					)
 					await MainActor.run {

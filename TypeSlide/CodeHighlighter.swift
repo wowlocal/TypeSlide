@@ -31,8 +31,16 @@ struct MetalCodeShowcase: View {
 					weight: pixelated ? .heavy : .bold,
 					design: pixelated ? .default : .monospaced)
 		)
-		.shadow(color: pixelated ? Color.clear : Color(red: 0.50, green: 0.13, blue: 1.00),
-				radius: pixelated ? 0 : 25
+//		.shadow(color: pixelated ? Color.clear : Color(red: 0.50, green: 0.13, blue: 1.00),
+//				radius: pixelated ? 0 : 25
+//		)
+		.padding(50)
+		.background(
+			RoundedRectangle(cornerRadius: 30, style: .continuous)
+				.fill(.ultraThinMaterial)
+				.opacity(pixelated ? 0.2 : 0.4)
+				.offset(y: 5)
+				.zIndex(0)
 		)
 		.frame(minWidth: 800)
 		.layerEffect(

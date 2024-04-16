@@ -9,6 +9,8 @@ import Foundation
 
 // not index
 let initialSlize = 49
+
+let metalCodeIdx = 33
 let codeSamplesToWarmUp: [KeyPath<Samples, String>] = [
 	\.identity1,
 	 \.identity0,
