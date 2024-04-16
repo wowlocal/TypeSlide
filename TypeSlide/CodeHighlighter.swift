@@ -8,6 +8,65 @@
 import SwiftUI
 import HighlightSwift
 
+struct MetalCodeShowcase: View {
+	let timer = Timer.publish(every: 0.03, on: .main, in: .common).autoconnect()
+	@State private var timerRunning = false
+	@State private var direction: ProgressDirection = .forward
+	enum ProgressDirection {
+		case forward, backward, stopped
+	}
+	@State var progress: Double = 0
+
+	var sample: KeyPath<Samples, String>
+	@Environment(\.codeSamples) var codeSamples
+
+	@State var pixelated = false
+
+	var body: some View {
+		Text(
+			pixelated ? "Про Metal были сессии ранее" : codeSamples.colored[sample] ?? ""
+		)
+		.fontStyle(
+			AppFont(size: pixelated ? 100 : 40,
+					weight: pixelated ? .heavy : .bold,
+					design: pixelated ? .default : .monospaced)
+		)
+		.shadow(color: pixelated ? Color.clear : Color(red: 0.50, green: 0.13, blue: 1.00),
+				radius: pixelated ? 0 : 25
+		)
+		.frame(minWidth: 800)
+		.layerEffect(
+			ShaderLibrary.pixelate(.float(progress)),
+				maxSampleOffset: CGSize(width: progress, height: progress)
+		)
+		.onReceive(timer) { _ in
+			guard timerRunning else { return }
+			switch direction {
+			case .forward:
+				progress += 0.8
+				if progress >= 30 { // Assuming 100 is the max progress
+					direction = .backward
+					withAnimation {
+						pixelated = true
+					}
+				}
+			case .backward:
+				progress -= 1
+				if progress <= 0 {
+					direction = .stopped
+				}
+			case .stopped:
+				break
+			}
+		}
+		.onAppear {
+			DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+				timerRunning = true
+			}
+		}
+	}
+}
+
 struct SwiftCodeHighlightView: View {
 	let code: AttributedString
 

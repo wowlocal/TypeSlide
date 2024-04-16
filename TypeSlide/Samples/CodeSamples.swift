@@ -327,5 +327,23 @@ withAnimation(.easeInOut(duration: 2)) {
 }
 """ }
 
+	var metalShowcaseLayerEffect: String { """
+body
+	.layerEffect(
+		ShaderLibrary.pixelate(.float(progress)),
+		maxSampleOffset: .zero
+	)
+""" }
+
+	var metalShowcase: String { """
+[[ stitchable ]] half4 pixelate(
+	float2 position,
+	SwiftUI::Layer layer,
+	float width
+) {
+		layer.sample(width * round(position / width));
+}
+""" }
+
 }
 

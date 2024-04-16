@@ -36,7 +36,8 @@ let codeSamplesToWarmUp: [KeyPath<Samples, String>] = [
 	 \.customAnimationProtocol1,
 	 \.customAnimationProtocol2,
 	 \.keyframe0, \.keyframe1, \.keyframe2, \.keyframeAll,
-	 \.animatableText0, \.animatableText1
+	 \.animatableText0, \.animatableText1,
+	 \.metalShowcaseLayerEffect, \.metalShowcase,
 ]
 
 let slides: [SlideType] = [
@@ -113,6 +114,9 @@ let slides: [SlideType] = [
 	.hipsterStatement("и анимировать текст по контуру"),
 	// --------------------------------------------------------------- //
 	.title("Комбинируя всё", subtitle: "переходы между экранами"),
+	// --------------------------------------------------------------- //
+	.codeMultistep([\.metalShowcaseLayerEffect]),
+	.metalShowcase,
 ]
 
 import SwiftUI
@@ -177,6 +181,8 @@ extension Presentation {
 			ProgressIndicatorText()
 		case .typewriterTextShowcase:
 			TypingTextView(text: "A very bad quack might jinx zippy fowls")
+		case .metalShowcase:
+			MetalCodeShowcase(sample: \.metalShowcase)
 		}
 	}
 }
@@ -210,5 +216,6 @@ enum SlideType {
 	case codeMultistep([KeyPath<Samples, String>])
 	case progressIndicatorTextShowcase
 	case typewriterTextShowcase
+	case metalShowcase
 }
 

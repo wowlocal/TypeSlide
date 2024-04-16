@@ -39,6 +39,7 @@
 		C6BDB9952BCC1C8700C52249 /* ViewSamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BDB9942BCC1C8700C52249 /* ViewSamples.swift */; };
 		C6BDB9972BCC1CBC00C52249 /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BDB9962BCC1CBC00C52249 /* Env.swift */; };
 		C6BDB9992BCC21B900C52249 /* PresentationContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BDB9982BCC21B900C52249 /* PresentationContent.swift */; };
+		C6F977B92BCEB09D0049E612 /* Transition.metal in Sources */ = {isa = PBXBuildFile; fileRef = C6F977B82BCEB09D0049E612 /* Transition.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		C6BDB9942BCC1C8700C52249 /* ViewSamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSamples.swift; sourceTree = "<group>"; };
 		C6BDB9962BCC1CBC00C52249 /* Env.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Env.swift; sourceTree = "<group>"; };
 		C6BDB9982BCC21B900C52249 /* PresentationContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationContent.swift; sourceTree = "<group>"; };
+		C6F977B82BCEB09D0049E612 /* Transition.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Transition.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 		C63FB3B22BB87B62002C22D6 /* TypeSlide */ = {
 			isa = PBXGroup;
 			children = (
+				C6F977B52BCEB04B0049E612 /* Metal */,
 				C6BDB98D2BCBEB7100C52249 /* Samples */,
 				C6A15AA82BBC2E2D00371F19 /* SlideLayout */,
 				C63FB3B32BB87B62002C22D6 /* App.swift */,
@@ -212,6 +215,14 @@
 				C6B901192BCE31450070B7B2 /* ProgressIndicatorText.swift */,
 			);
 			path = Samples;
+			sourceTree = "<group>";
+		};
+		C6F977B52BCEB04B0049E612 /* Metal */ = {
+			isa = PBXGroup;
+			children = (
+				C6F977B82BCEB09D0049E612 /* Transition.metal */,
+			);
+			path = Metal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,6 +383,7 @@
 				C63FB3DF2BB9A907002C22D6 /* DesignProps.swift in Sources */,
 				C6BDB9862BC9D0E600C52249 /* SectionStart.swift in Sources */,
 				C6A15AA32BBC205400371F19 /* SlideView.swift in Sources */,
+				C6F977B92BCEB09D0049E612 /* Transition.metal in Sources */,
 				C6BDB9992BCC21B900C52249 /* PresentationContent.swift in Sources */,
 				C6BDB9952BCC1C8700C52249 /* ViewSamples.swift in Sources */,
 				C60B572A2BC1519C006DD219 /* CodeHighlighter.swift in Sources */,
