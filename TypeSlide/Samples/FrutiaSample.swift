@@ -36,8 +36,7 @@ struct FrutiaShowcase: View {
 						.buttonStyle(.squishable(fadeOnPress: false))
 						.aspectRatio(1, contentMode: .fit)
 						.zIndex(topmostIngredientID == measuredIngredient.id ? 1 : 0)
-						.accessibility(label: Text("\(ingredient.name) Ingredient",
-												   comment: "Accessibility label for collapsed ingredient card in smoothie overview"))
+						.keyboardShortcut(KeyEquivalent("a"), modifiers: [.control])
 					}
 //				}.border(.red)
 			}
@@ -74,6 +73,7 @@ struct FrutiaShowcase: View {
 					.accessibilityElement(children: .contain)
 					.accessibility(sortPriority: presenting ? 1 : 0)
 					.accessibility(hidden: !presenting)
+					.keyboardShortcut(KeyEquivalent("b"), modifiers: [.control])
 			}
 		}
 	}
