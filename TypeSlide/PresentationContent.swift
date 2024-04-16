@@ -107,6 +107,8 @@ let slides: [SlideType] = [
 	.title("Как анимировать текст?", subtitle: "зависит от контекста"),
 	.progressIndicatorTextShowcase,
 	.typewriterTextShowcase,
+	.hipsterStatement("Можно упороться в CTFontCreatePathForGlyph"),
+	.hipsterStatement("и анимировать текст по контуру"),
 ]
 
 import SwiftUI
@@ -206,71 +208,3 @@ enum SlideType {
 	case typewriterTextShowcase
 }
 
-
-/*
- var charLayers = [CAShapeLayer]()
-
- override func viewDidAppear(_ animated: Bool) {
-	 super.viewDidAppear(animated)
-
-	 for layer in self.charLayers {
-		 layer.removeFromSuperlayer()
-	 }
-
-	 let stringAttributes = [ NSAttributedStringKey.font: UIFont(name: "Futura-CondensedExtraBold", size: 64.0)! ]
-	 let attributedString = NSMutableAttributedString(string: "hello world", attributes: stringAttributes )
-	 let charPaths = self.characterPaths(attributedString: attributedString, position: CGPoint(x: 24, y: 192))
-
-	 self.charLayers = charPaths.map { path -> CAShapeLayer in
-		 let shapeLayer = CAShapeLayer()
-		 shapeLayer.fillColor = UIColor.clear.cgColor
-		 shapeLayer.strokeColor = UIColor.red.cgColor
-		 shapeLayer.lineWidth = 2
-		 shapeLayer.path = path
-		 return shapeLayer
-	 }
-
-	 for layer in self.charLayers {
-		 view.layer.addSublayer(layer)
-		 let animation = CABasicAnimation(keyPath: "strokeEnd")
-		 animation.fromValue = 0
-		 animation.duration = 2.2
-		 layer.add(animation, forKey: "charAnimation")
-	 }
- }
-
- func characterPaths(attributedString: NSAttributedString, position: CGPoint) -> [CGPath] {
-
-	 let line = CTLineCreateWithAttributedString(attributedString)
-
-	 guard let glyphRuns = CTLineGetGlyphRuns(line) as? [CTRun] else { return []}
-
-	 var characterPaths = [CGPath]()
-
-	 for glyphRun in glyphRuns {
-		 guard let attributes = CTRunGetAttributes(glyphRun) as? [String:AnyObject] else { continue }
-		 let font = attributes[kCTFontAttributeName as String] as! CTFont
-
-		 for index in 0..<CTRunGetGlyphCount(glyphRun) {
-			 let glyphRange = CFRangeMake(index, 1)
-
-			 var glyph = CGGlyph()
-			 CTRunGetGlyphs(glyphRun, glyphRange, &glyph)
-
-			 var characterPosition = CGPoint()
-			 CTRunGetPositions(glyphRun, glyphRange, &characterPosition)
-			 characterPosition.x += position.x
-			 characterPosition.y += position.y
-
-			 if let glyphPath = CTFontCreatePathForGlyph(font, glyph, nil) {
-				 var transform = CGAffineTransform(a: 1, b: 0, c: 0, d: -1, tx: characterPosition.x, ty: characterPosition.y)
-				 if let charPath = glyphPath.copy(using: &transform) {
-					 characterPaths.append(charPath)
-				 }
-			 }
-		 }
-	 }
-	 return characterPaths
- }
-
- */
