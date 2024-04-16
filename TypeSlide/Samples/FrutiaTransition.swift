@@ -411,3 +411,103 @@ extension ButtonStyle where Self == SquishableButtonStyle {
 		SquishableButtonStyle(fadeOnPress: fadeOnPress)
 	}
 }
+
+struct FlipView<Front: View, Back: View>: View {
+	var visibleSide: FlipViewSide
+	@ViewBuilder var front: Front
+	@ViewBuilder var back: Back
+
+	var body: some View {
+		ZStack {
+			front
+				.modifier(FlipModifier(side: .front, visibleSide: visibleSide))
+			back
+				.modifier(FlipModifier(side: .back, visibleSide: visibleSide))
+		}
+	}
+}
+
+struct FlipModifier: AnimatableModifier {
+	var side: FlipViewSide
+	var flipProgress: Double
+
+	init(side: FlipViewSide, visibleSide: FlipViewSide) {
+		self.side = side
+		self.flipProgress = visibleSide == .front ? 0 : 1
+	}
+
+	public var animatableData: Double {
+		get { flipProgress }
+		set { flipProgress = newValue }
+	}
+
+	var visible: Bool {
+		switch side {
+		case .front:
+			return flipProgress <= 0.5
+		case .back:
+			return flipProgress > 0.5
+		}
+	}
+
+	public func body(content: Content) -> some View {
+		ZStack {
+			content
+				.opacity(visible ? 1 : 0)
+				.accessibility(hidden: !visible)
+		}
+		.scaleEffect(x: scale, y: 1.0)
+		.rotation3DEffect(.degrees(flipProgress * -180), axis: (x: 0.0, y: 1.0, z: 0.0), perspective: 0.5)
+	}
+
+	var scale: CGFloat {
+		switch side {
+		case .front:
+			return 1.0
+		case .back:
+			return -1.0
+		}
+	}
+}
+
+extension Ingredient {
+	static let orange = Ingredient(
+		id: "orange",
+		name: String(localized: "Sexy", table: "Ingredients", comment: "Ingredient name"),
+		title: CardTitle(
+			rotation: Angle.degrees(-90),
+			offset: CGSize(width: -130, height: -60),
+			blendMode: .overlay,
+			fontSize: 80
+		),
+		thumbnailCrop: Crop(yOffset: -15, scale: 2)
+	)
+}
+
+struct IngredientCard: View {
+	var ingredient: Ingredient
+	var presenting: Bool
+	var closeAction: () -> Void = {}
+
+	@State private var visibleSide = FlipViewSide.front
+
+	var body: some View {
+		FlipView(visibleSide: visibleSide) {
+			IngredientGraphic(ingredient: ingredient, style: presenting ? .cardFront : .thumbnail, closeAction: closeAction, flipAction: flipCard)
+		} back: {
+			IngredientGraphic(ingredient: ingredient, style: .cardBack, closeAction: closeAction, flipAction: flipCard)
+		}
+		.contentShape(Rectangle())
+		.animation(.flipCard, value: visibleSide)
+	}
+
+	func flipCard() {
+		visibleSide.toggle()
+	}
+}
+
+extension Animation {
+	static let openCard = Animation.spring(response: 0.45, dampingFraction: 0.9)
+	static let closeCard = Animation.spring(response: 0.35, dampingFraction: 1)
+	static let flipCard = Animation.spring(response: 0.35, dampingFraction: 0.7)
+}

@@ -503,3 +503,133 @@ extension Ingredient {
 		NutritionFact.lookupFoodItem(id, forVolume: .cups(1))
 	}
 }
+
+struct MeasuredIngredient: Identifiable, Codable {
+	var ingredient: Ingredient
+	var measurement: Measurement<UnitVolume>
+
+	init(_ ingredient: Ingredient, measurement: Measurement<UnitVolume>) {
+		self.ingredient = ingredient
+		self.measurement = measurement
+	}
+
+	// Identifiable
+	var id: Ingredient.ID { ingredient.id }
+}
+
+extension MeasuredIngredient {
+	var kilocalories: Int {
+		guard let nutritionFact = nutritionFact else {
+			return 0
+		}
+		return Int(nutritionFact.kilocalories)
+	}
+
+	// Nutritional information according to the quantity of this measurement.
+	var nutritionFact: NutritionFact? {
+		guard let nutritionFact = ingredient.nutritionFact else {
+			return nil
+		}
+		let mass = measurement.convertedToMass(usingDensity: nutritionFact.density)
+		return nutritionFact.converted(toMass: mass)
+	}
+}
+
+extension Ingredient {
+	func measured(with unit: UnitVolume) -> MeasuredIngredient {
+		MeasuredIngredient(self, measurement: Measurement(value: 1, unit: unit))
+	}
+}
+
+extension MeasuredIngredient {
+	func scaled(by scale: Double) -> MeasuredIngredient {
+		return MeasuredIngredient(ingredient, measurement: measurement * scale)
+	}
+}
+
+
+struct Smoothie: Identifiable, Codable {
+	var id: String
+	var title: String
+	var description: AttributedString
+	var measuredIngredients: [MeasuredIngredient]
+}
+
+extension Smoothie {
+	init?(for id: Smoothie.ID) {
+		guard let smoothie = Smoothie.all().first(where: { $0.id == id }) else { return nil }
+		self = smoothie
+	}
+
+	var kilocalories: Int {
+		let value = measuredIngredients.reduce(0) { total, ingredient in total + ingredient.kilocalories }
+		return Int(round(Double(value) / 10.0) * 10)
+	}
+
+	var energy: Measurement<UnitEnergy> {
+		return Measurement<UnitEnergy>(value: Double(kilocalories), unit: .kilocalories)
+	}
+
+	// The nutritional information for the combined ingredients
+	var nutritionFact: NutritionFact {
+		let facts = measuredIngredients.compactMap { $0.nutritionFact }
+		guard let firstFact = facts.first else {
+			print("Could not find nutrition facts for \(title) — using `banana`'s nutrition facts.")
+			return .banana
+		}
+		return facts.dropFirst().reduce(firstFact, +)
+	}
+
+	var menuIngredients: [MeasuredIngredient] {
+		measuredIngredients.filter { $0.id == Ingredient.orange.id }
+	}
+
+	func matches(_ string: String) -> Bool {
+		string.isEmpty ||
+		title.localizedCaseInsensitiveContains(string) ||
+		menuIngredients.contains {
+			$0.ingredient.name.localizedCaseInsensitiveContains(string)
+		}
+	}
+}
+
+extension Smoothie: Hashable {
+	static func == (lhs: Smoothie, rhs: Smoothie) -> Bool {
+		lhs.id == rhs.id
+	}
+
+	func hash(into hasher: inout Hasher) {
+		hasher.combine(id)
+	}
+}
+
+
+// MARK: - Smoothie List
+extension Smoothie {
+	@SmoothieArrayBuilder
+	static func all() -> [Smoothie] {
+		Smoothie(id: "papas-papaya", title: String(localized: "Papa's Papaya", comment: "Smoothie name")) {
+			AttributedString(localized: "Papa would be proud of you if he saw you drinking this!", comment: "Papa's Papaya smoothie description")
+
+			Ingredient.orange.measured(with: .cups)
+		}
+	}
+
+	// Used in previews.
+	static var berryBlue: Smoothie { Smoothie(for: "berry-blue")! }
+	static var kiwiCutie: Smoothie { Smoothie(for: "kiwi-cutie")! }
+	static var hulkingLemonade: Smoothie { Smoothie(for: "hulking-lemonade")! }
+	static var mangoJambo: Smoothie { Smoothie(for: "mango-jambo")! }
+	static var tropicalBlue: Smoothie { Smoothie(for: "tropical-blue")! }
+	static var lemonberry: Smoothie { Smoothie(for: "lemonberry")! }
+	static var oneInAMelon: Smoothie { Smoothie(for: "one-in-a-melon")! }
+	static var thatsASmore: Smoothie { Smoothie(for: "thats-a-smore")! }
+	static var thatsBerryBananas: Smoothie { Smoothie(for: "thats-berry-bananas")! }
+}
+
+extension Smoothie {
+	init(id: Smoothie.ID, title: String, @SmoothieBuilder _ makeIngredients: () -> (AttributedString, [MeasuredIngredient])) {
+		let (description, ingredients) = makeIngredients()
+		self.init(id: id, title: title, description: description, measuredIngredients: ingredients)
+	}
+}

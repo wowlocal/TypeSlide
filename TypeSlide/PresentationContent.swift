@@ -8,7 +8,7 @@
 import Foundation
 
 // not index
-let initialSlize = 49
+let initialSlize = 51
 
 let metalCodeIdx = 33
 let codeSamplesToWarmUp: [KeyPath<Samples, String>] = [
@@ -119,6 +119,7 @@ let slides: [SlideType] = [
 	// --------------------------------------------------------------- //
 	.codeMultistep([\.metalShowcaseLayerEffect]),
 	.metalShowcase,
+	.hipsterStatement("The End")
 ]
 
 import SwiftUI
@@ -184,7 +185,11 @@ extension Presentation {
 		case .typewriterTextShowcase:
 			TypingTextView(text: "A very bad quack might jinx zippy fowls")
 		case .metalShowcase:
-			MetalCodeShowcase(sample: \.metalShowcase)
+				FrutiaShowcase()
+//			IngredientGraphic(ingredient: Ingredient.orange, style: .cardBack)
+//				.frame(width: 180, height: 180)
+//				.previewDisplayName("Thumbnail")
+			//MetalCodeShowcase(sample: \.metalShowcase)
 		}
 	}
 }

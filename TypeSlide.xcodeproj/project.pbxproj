@@ -43,6 +43,7 @@
 		C6F977BB2BCEF01F0049E612 /* FrutiaTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F977BA2BCEF01F0049E612 /* FrutiaTransition.swift */; };
 		C6F977BD2BCEF4D30049E612 /* FrutialModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F977BC2BCEF4D30049E612 /* FrutialModel.swift */; };
 		C6F977BF2BCEF6C30049E612 /* NutritionalItems.json in Resources */ = {isa = PBXBuildFile; fileRef = C6F977BE2BCEF6C30049E612 /* NutritionalItems.json */; };
+		C6F977C12BCF047B0049E612 /* FrutiaModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F977C02BCF047B0049E612 /* FrutiaModel2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		C6F977BA2BCEF01F0049E612 /* FrutiaTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrutiaTransition.swift; sourceTree = "<group>"; };
 		C6F977BC2BCEF4D30049E612 /* FrutialModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrutialModel.swift; sourceTree = "<group>"; };
 		C6F977BE2BCEF6C30049E612 /* NutritionalItems.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = NutritionalItems.json; sourceTree = "<group>"; };
+		C6F977C02BCF047B0049E612 /* FrutiaModel2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrutiaModel2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +224,7 @@
 				C6B901192BCE31450070B7B2 /* ProgressIndicatorText.swift */,
 				C6F977BA2BCEF01F0049E612 /* FrutiaTransition.swift */,
 				C6F977BC2BCEF4D30049E612 /* FrutialModel.swift */,
+				C6F977C02BCF047B0049E612 /* FrutiaModel2.swift */,
 			);
 			path = Samples;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				C6A15AA72BBC2DFA00371F19 /* StatementSlide.swift in Sources */,
 				C6F977BB2BCEF01F0049E612 /* FrutiaTransition.swift in Sources */,
 				C6A15AAA2BBC2F9500371F19 /* TitleSubtitle.swift in Sources */,
+				C6F977C12BCF047B0049E612 /* FrutiaModel2.swift in Sources */,
 				C6BDB9882BCA8FDD00C52249 /* Color.swift in Sources */,
 				C6BDB98A2BCAA01C00C52249 /* CodePreview.swift in Sources */,
 				C63FB3DF2BB9A907002C22D6 /* DesignProps.swift in Sources */,
