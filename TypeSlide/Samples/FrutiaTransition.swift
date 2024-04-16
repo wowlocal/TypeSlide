@@ -359,6 +359,7 @@ struct IngredientGraphic: View {
 				CardActionButton(label: "Close", systemImage: "xmark.circle.fill", action: closeAction)
 					.scaleEffect(displayingAsCard ? 1 : 0.5)
 					.opacity(displayingAsCard ? 1 : 0)
+					.keyboardShortcut(KeyEquivalent("b"), modifiers: [.control])
 			}
 			Spacer()
 			CardActionButton(
@@ -368,6 +369,7 @@ struct IngredientGraphic: View {
 			)
 			.scaleEffect(displayingAsCard ? 1 : 0.5)
 			.opacity(displayingAsCard ? 1 : 0)
+			.keyboardShortcut(KeyEquivalent("f"), modifiers: [.control])
 		}
 		.frame(maxWidth: .infinity, alignment: .trailing)
 	}

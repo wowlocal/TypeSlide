@@ -73,7 +73,6 @@ struct FrutiaShowcase: View {
 					.accessibilityElement(children: .contain)
 					.accessibility(sortPriority: presenting ? 1 : 0)
 					.accessibility(hidden: !presenting)
-					.keyboardShortcut(KeyEquivalent("b"), modifiers: [.control])
 			}
 		}
 	}
