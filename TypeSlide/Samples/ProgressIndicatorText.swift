@@ -63,7 +63,7 @@ struct TypingTextModifier: AnimatableModifier {
 		var body: some View {
 			Text(text)
 				.frame(maxWidth: .infinity, alignment: .leading)
-				.font(.system(size: 60).monospaced())
+				.font(.system(size: 70).monospaced())
 				.foregroundColor(.white)
 		}
 	}
