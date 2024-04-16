@@ -43,7 +43,7 @@ let codeSamplesToWarmUp: [KeyPath<Samples, String>] = [
 ]
 
 let slides: [SlideType] = [
-	.title("SwiftUI анимации", subtitle: "От основ к продвинутым практикам"), // 1
+	.title("Вжух SwiftUI", subtitle: "От основ к продвинутым практикам анимирования"), // 1
 	// --------------------------------------------------------------- //
 	.shakeHand,
 	.identitySample0, // 2
@@ -51,8 +51,8 @@ let slides: [SlideType] = [
 	.rectSome, // 4
 	.rectAny, // 5
 	// --------------------------------------------------------------- //
-	.statement(title: "Strutural Identity"), // 6
-	.statement(title: "Strutural Identity", subtitle: "А как насчет explicit identity"), // 7
+	.statement(title: "Структурная Идентичность"), // 6
+	.statement(title: "Структурная Идентичность", subtitle: "А как насчет явной identity"), // 7
 	.rectExplicitId, // 8
 	.hipsterStatement("Типизация играет ключевую роль в определении identity"), // 9
 	// --------------------------------------------------------------- //
@@ -61,22 +61,22 @@ let slides: [SlideType] = [
 	.possibleAnyView, // 12
 	.bullets(title: "AnyView", // 13
 			 bullets: [
-				"Makes code harder to understand",
-				"Fewer compile-time diagnostics",
-				"Worse performance when not needed",
+				"Усложняет понимание кода",
+				"Меньше ошибок на этапе компиляции — не всегда плюс",
+				"Производительность страдает",
 			 ]),
 	.hipsterStatement("Not Recommended"), // 14
 	// --------------------------------------------------------------- //
-	.title(".transition", subtitle: "Анимации появления и исчезновения"), // 15
+	.title(".transition", subtitle: "Эффектно зажечься и угаснуть"), // 15
 	.transitionIntro, // 16
 	.transitionSymmetric, // 17
 	.transitionAsymmetric, // 18
 	.statement(title: "Добавим специй"), // 19
-	.statement(title: "Добавим специй", subtitle: ".bouncy() .combined(with: .opacity)"), // 20
+	.statement(title: "Добавим специй", subtitle: ".bouncy() с .opacity для души"), // 20
 	.transitionBouncy, // 21
 	// --------------------------------------------------------------- //
-	.title(".animation", subtitle: "Функции анимирования"), // 22
-	.bullets(title: "Animation taxonomy",
+	.title(".animation", subtitle: "Гармония движений"), // 22
+	.bullets(title: "Ритмы анимации",
 			 bullets: [
 				"Timing curve",
 				"Spring",
@@ -94,7 +94,7 @@ let slides: [SlideType] = [
 			 bullets: [
 				"Spring для интерактивных элементов",
 				"Linear для прогресс индикаторов",
-				"EaseInOut отстой",
+				"EaseInOut больше не в моде",
 			 ]),
 	// --------------------------------------------------------------- //
 	.hipsterStatement("но если этого мало..."),
@@ -110,15 +110,17 @@ let slides: [SlideType] = [
 	.title("Как анимировать текст?", subtitle: "зависит от контекста"),
 	.progressIndicatorTextShowcase,
 	.typewriterTextShowcase,
-	.statement(title: "Animatable", subtitle: "основа любой анимации"),
+	.statement(title: "Animatable", subtitle: "сердце любой анимации"),
 	.codeMultistep([\.animatableText0, \.animatableText1]),
 	.hipsterStatement("Можно упороться в CTFontCreatePathForGlyph"),
-	.hipsterStatement("и анимировать текст по контуру"),
+	.hipsterStatement("и анимировать текст, следуя по контуру букв"),
 	// --------------------------------------------------------------- //
-	.title("Комбинируя всё", subtitle: "переходы между экранами"),
+	.title("Metal 🎸", subtitle: "главное — правильно расставить точки"),
 	// --------------------------------------------------------------- //
 	.codeMultistep([\.metalShowcaseLayerEffect]),
 	.metalShowcase,
+	.title("Комбинируя всё", subtitle: "кастомные переходы между экранами"),
+	.frutiaShowcase,
 	.hipsterStatement("The End")
 ]
 
@@ -185,11 +187,13 @@ extension Presentation {
 		case .typewriterTextShowcase:
 			TypingTextView(text: "A very bad quack might jinx zippy fowls")
 		case .metalShowcase:
+			MetalCodeShowcase(sample: \.metalShowcase)
+		case .frutiaShowcase:
 				FrutiaShowcase()
 //			IngredientGraphic(ingredient: Ingredient.orange, style: .cardBack)
 //				.frame(width: 180, height: 180)
 //				.previewDisplayName("Thumbnail")
-			//MetalCodeShowcase(sample: \.metalShowcase)
+			//
 		}
 	}
 }
@@ -224,5 +228,6 @@ enum SlideType {
 	case progressIndicatorTextShowcase
 	case typewriterTextShowcase
 	case metalShowcase
+	case frutiaShowcase
 }
 
