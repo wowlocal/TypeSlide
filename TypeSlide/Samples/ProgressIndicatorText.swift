@@ -71,7 +71,8 @@ struct TypingTextModifier: AnimatableModifier {
 	func body(content: Content) -> some View {
 		let visibleLength = Int(progress * CGFloat(text.count))
 		let visibleText = String(text.prefix(visibleLength))
-		return content.overlay(LabelView(text: visibleText))
+		let cursor = visibleLength > text.count - 2 ? "" : "|"
+		return content.overlay(LabelView(text: visibleText + cursor))
 	}
 }
 
