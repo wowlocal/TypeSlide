@@ -399,6 +399,7 @@ struct SquishableButtonStyle: ButtonStyle {
 		configuration.label
 			.opacity(configuration.isPressed && fadeOnPress ? 0.75 : 1)
 			.scaleEffect(configuration.isPressed ? 0.95 : 1)
+			.animation(.spring(response: 0.2, dampingFraction: 0.5), value: configuration.isPressed)
 	}
 }
 

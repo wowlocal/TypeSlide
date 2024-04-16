@@ -219,7 +219,9 @@ struct FrutiaShowcase: View {
 
 			if selectedIngredientID != nil {
 				// надо убрать падинги в SlideView
-				Rectangle().fill(.thinMaterial).ignoresSafeArea()
+				Rectangle().fill(.ultraThinMaterial)
+					.ignoresSafeArea()
+					.padding(-150)
 			}
 
 			ForEach(smoothie.menuIngredients) { measuredIngredient in
