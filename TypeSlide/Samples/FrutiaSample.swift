@@ -49,7 +49,7 @@ struct FrutiaShowcase: View {
 //			ScrollView {
 				content
 					.frame(maxWidth: 250)
-					.offset(x: 200) // не нужен будет когда поместим код
+					.offset(x: 560) // не нужен будет когда поместим код
 			// размер карточки
 					//.frame(maxWidth: .infinity)
 //			}

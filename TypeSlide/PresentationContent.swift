@@ -8,7 +8,7 @@
 import Foundation
 
 // not index
-let initialSlize = 51
+let initialSlize = 53
 
 let metalCodeIdx = 33
 let codeSamplesToWarmUp: [KeyPath<Samples, String>] = [
@@ -189,7 +189,15 @@ extension Presentation {
 		case .metalShowcase:
 			MetalCodeShowcase(sample: \.metalShowcase)
 		case .frutiaShowcase:
+			ZStack {
+				JustCode(code: [
+					\.customAnimationProtocol0,
+					 \.customAnimationProtocol1,
+					 \.customAnimationProtocol2,
+				])
+				.padding(.leading, -700)
 				FrutiaShowcase()
+			}
 //			IngredientGraphic(ingredient: Ingredient.orange, style: .cardBack)
 //				.frame(width: 180, height: 180)
 //				.previewDisplayName("Thumbnail")
