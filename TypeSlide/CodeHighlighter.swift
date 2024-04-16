@@ -54,7 +54,7 @@ struct MetalCodeShowcase: View {
 				progress += 0.8
 				if progress >= 30 { // Assuming 100 is the max progress
 					direction = .backward
-					withAnimation {
+					withAnimation(.easeIn) {
 						pixelated = true
 					}
 				}
