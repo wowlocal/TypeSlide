@@ -321,6 +321,10 @@ let visibleText = text.prefix(visibleLength)
 		 Text("\\(progress) %")
 	 }
  }
+...
+withAnimation(.easeInOut(duration: 2)) {
+   progress = 90
+}
 """ }
 
 }
