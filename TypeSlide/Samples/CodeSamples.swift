@@ -439,8 +439,6 @@ var body: some View {
 
 	var frutiaAnimateCodeDontHide: String { """
 animationSpeed = 0.1
-disableImageScaling()
 """ }
-
 }
 
