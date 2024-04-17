@@ -169,3 +169,34 @@ var customAnimationProtocol: JustCode {
 
 // --------------------------------------------------------------- //
 
+var dummyIngrid: Ingredient {
+	var orange = Ingredient.orange
+	orange.name = ""
+	return orange
+}
+
+var frutiaPreconditionClosed: some View {
+	HStack {
+		JustCode(code: [
+			\.frutiaPreconditionClosed,
+		])
+		//.padding(.leading, -700)
+		Spacer()
+		IngredientGraphic(ingredient: dummyIngrid, style: .thumbnail)
+			.frame(width: 220, height: 220)
+		Spacer()
+	}
+}
+
+var frutiaPreconditionOpened: some View {
+	HStack {
+		JustCode(code: [
+			\.frutiaPreconditionOpened,
+		])
+		//.padding(.leading, -700)
+		Spacer()
+		IngredientGraphic(ingredient: dummyIngrid, style: .cardFront)
+			.frame(width: 500)//, height: 220)
+		Spacer()
+	}
+}

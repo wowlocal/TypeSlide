@@ -345,6 +345,29 @@ body
 }
 """ }
 
+	// --------------------------------------------------------------- //
+
+	var frutiaPreconditionClosed: String { """
+var body: some View {
+	Image()
+		.resizable()
+		.scaleEffect(0.4)
+		.frame(width: 200)
+		.aspectRatio(1)
+		.clipShape(RoundedRectangle())
+}
+""" }
+
+	var frutiaPreconditionOpened: String { """
+var body: some View {
+	Image()
+		.frame(width: 500)
+		.aspectRatio(0.75)
+		.clipShape(RoundedRectangle())
+}
+""" }
+
+	// --------------------------------------------------------------- //
 
 	var frutiaAnimateCode0: String { """
 var progress: Double
