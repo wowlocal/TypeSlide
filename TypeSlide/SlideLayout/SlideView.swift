@@ -70,7 +70,7 @@ struct SlideView<Content: View>: View {
 			ZStack {
 				backgroundColor //debug ? Color.gray : Color.white // Slide background color
 					.mask(
-						Circle().scale(theEnd ? 0.4 : 2)
+						Circle().scale(theEnd ? 0.1 : 2)
 					)
 				RadialGradient(gradient: Gradient(colors: [.clear, .black.opacity(0.75)]), center: .center, startRadius: 140, endRadius: 500)
 					.opacity(theEnd ? 0.8 : 0) // Adjust opacity to control the darkness of the corners

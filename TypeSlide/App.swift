@@ -125,7 +125,7 @@ struct Presentation: View {
 	var debugButton: some View {
 		Button(action: {
 			withAnimation(.spring) {
-			debug.toggle()
+				debug.toggle()
 			}
 		}) {
 			Text("Toggle Button")
@@ -151,7 +151,7 @@ struct Presentation: View {
 					}
 				}
 			}
-			.bg(color: /*debug ? .clear : */presentationManager.slideColor)
+			.bg(color: debug ? .clear : presentationManager.slideColor)
 			.theEnd(debug ? true : false)
 			.onReceive(timer) { _ in
 				self.colorIndex = (self.colorIndex + 1) % self.colors.count
