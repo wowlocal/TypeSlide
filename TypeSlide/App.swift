@@ -124,7 +124,7 @@ struct Presentation: View {
 	@ViewBuilder
 	var debugButton: some View {
 		Button(action: {
-			withAnimation(.spring) {
+			withAnimation(.spring.speed(0.7)) {
 				debug.toggle()
 			}
 		}) {
