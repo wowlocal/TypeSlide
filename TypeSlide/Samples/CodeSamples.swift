@@ -380,15 +380,44 @@ var body: some View {
 
 	// --------------------------------------------------------------- //
 
-	var frutiaAnimateCode0: String { """
-var progress: Double
+	var matchedGeometryFunc: String { """
+func matchedGeometryEffect(
+	id: ID, in: Namespace.ID,
+	properties: MatchedGeometryProperties,
+	isSource: Bool = true
+)
+""" }
 
-var animatableData: Double {
- get { progress }
- set { progress = newValue }
+	var matchedGeometryProperties: String { """
+struct MatchedGeometryProperties : OptionSet {
+	static let position: Self
+	static let size: Self
+	static let frame: Self
 }
-...
-CODE PLACEHOLDER
+""" }
+
+	var frutiaAnimateCode: String { """
+@Namespace var namespace
+@State var selected: Item?
+
+var body: some View {
+	ZStack {
+		ForEach(items) {
+			Thumbnail($0)
+				.matchedGeometryEffect(
+				 id: $0.id,
+				 in: namespace,
+				 isSource: true
+			  )
+		}
+		Details(selected)
+			.matchedGeometryEffect(
+			 id: selected.id,
+			 in: namespace,
+			 isSource: true
+			)
+	}
+}
 """ }
 }
 

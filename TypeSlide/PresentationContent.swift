@@ -41,7 +41,8 @@ let codeSamplesToWarmUp: [KeyPath<Samples, String>] = [
 	 \.animatableText0, \.animatableText1,
 	 \.metalShowcaseLayerEffect, \.metalShowcase,
 	 \.frutiaPreconditionOpened, \.frutiaPreconditionClosed, \.frutiaPreconditionOpenedClosedCombined,
-	 \.frutiaAnimateCode0,
+	 \.matchedGeometryFunc, \.matchedGeometryProperties,
+	 \.frutiaAnimateCode,
 ]
 
 let slides: [SlideType] = [
@@ -126,6 +127,7 @@ let slides: [SlideType] = [
 	.frutiaPreconditionOpened,
 	.frutiaPreconditionOpenedClosedCombined,
 	.frutiaOpenCloseText,
+	.codeMultistep([\.matchedGeometryFunc, \.matchedGeometryProperties]),
 	// --------------------------------------------------------------- //
 	.frutiaShowcase,
 	// --------------------------------------------------------------- //
@@ -207,7 +209,7 @@ extension Presentation {
 		case .frutiaShowcase:
 			ZStack {
 				JustCode(code: [
-					\.frutiaAnimateCode0,
+					\.frutiaAnimateCode,
 				])
 				.padding(.leading, -700)
 				FrutiaShowcase()
