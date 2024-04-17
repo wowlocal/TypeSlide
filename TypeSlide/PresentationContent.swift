@@ -125,7 +125,10 @@ let slides: [SlideType] = [
 	.frutiaPreconditionClosed,
 	.frutiaPreconditionOpened,
 	.frutiaPreconditionOpenedClosedCombined,
+	.frutiaOpenCloseText,
+	// --------------------------------------------------------------- //
 	.frutiaShowcase,
+	// --------------------------------------------------------------- //
 	.hipsterStatement("The End")
 ]
 
@@ -199,6 +202,8 @@ extension Presentation {
 			frutiaPreconditionClosed
 		case .frutiaPreconditionOpenedClosedCombined:
 			JustCode(code: \.frutiaPreconditionOpenedClosedCombined)
+		case .frutiaOpenCloseText:
+			frutiaOpenCloseText
 		case .frutiaShowcase:
 			ZStack {
 				JustCode(code: [
@@ -248,6 +253,7 @@ enum SlideType {
 	case frutiaPreconditionClosed
 	case frutiaPreconditionOpened
 	case frutiaPreconditionOpenedClosedCombined
+	case frutiaOpenCloseText
 	case frutiaShowcase
 }
 

@@ -45,6 +45,7 @@
 		C6F977BF2BCEF6C30049E612 /* NutritionalItems.json in Resources */ = {isa = PBXBuildFile; fileRef = C6F977BE2BCEF6C30049E612 /* NutritionalItems.json */; };
 		C6F977C12BCF047B0049E612 /* FrutiaModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F977C02BCF047B0049E612 /* FrutiaModel2.swift */; };
 		C6F977C32BCF0BE30049E612 /* FrutiaSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F977C22BCF0BE30049E612 /* FrutiaSample.swift */; };
+		C6F977C52BCFFA770049E612 /* FrutiaGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F977C42BCFFA770049E612 /* FrutiaGrid.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,7 @@
 		C6F977BE2BCEF6C30049E612 /* NutritionalItems.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = NutritionalItems.json; sourceTree = "<group>"; };
 		C6F977C02BCF047B0049E612 /* FrutiaModel2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrutiaModel2.swift; sourceTree = "<group>"; };
 		C6F977C22BCF0BE30049E612 /* FrutiaSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrutiaSample.swift; sourceTree = "<group>"; };
+		C6F977C42BCFFA770049E612 /* FrutiaGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrutiaGrid.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +230,7 @@
 				C6F977BC2BCEF4D30049E612 /* FrutialModel.swift */,
 				C6F977C02BCF047B0049E612 /* FrutiaModel2.swift */,
 				C6F977C22BCF0BE30049E612 /* FrutiaSample.swift */,
+				C6F977C42BCFFA770049E612 /* FrutiaGrid.swift */,
 			);
 			path = Samples;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				C60B572A2BC1519C006DD219 /* CodeHighlighter.swift in Sources */,
 				C6A15AA52BBC263300371F19 /* BulletsSlide.swift in Sources */,
 				C6B9011A2BCE31450070B7B2 /* ProgressIndicatorText.swift in Sources */,
+				C6F977C52BCFFA770049E612 /* FrutiaGrid.swift in Sources */,
 				C63FB3B42BB87B62002C22D6 /* App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

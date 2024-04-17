@@ -200,3 +200,8 @@ var frutiaPreconditionOpened: some View {
 		Spacer()
 	}
 }
+
+var frutiaOpenCloseText: some View {
+	FruitsGrid()
+}
+
