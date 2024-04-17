@@ -26,7 +26,7 @@ struct FrutiaShowcase: View {
 						let presenting = selectedIngredientID == measuredIngredient.id
 						Button(action: { select(ingredient: ingredient) }) {
 							IngredientGraphic(ingredient: measuredIngredient.ingredient, style: presenting ? .cardFront : .thumbnail)
-								.matchedGeometryEffect(
+								.matchedGeometryEffect( // убрать для демки
 									id: measuredIngredient.id,
 									in: namespace,
 									isSource: !presenting

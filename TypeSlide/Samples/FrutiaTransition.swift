@@ -367,6 +367,7 @@ struct IngredientGraphic: View {
 				systemImage: side == .front ? "info.circle.fill" : "arrow.left.circle.fill",
 				action: flipAction
 			)
+			.opacity(0) // hide info button for simplicity
 			.scaleEffect(displayingAsCard ? 1 : 0.5)
 			.opacity(displayingAsCard ? 1 : 0)
 			.keyboardShortcut(KeyEquivalent("f"), modifiers: [.control])
