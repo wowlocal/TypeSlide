@@ -7,9 +7,6 @@
 
 import Foundation
 
-// not index
-let initialSlize = 60
-
 let metalCodeIdx = 33
 let codeSamplesToWarmUp: [KeyPath<Samples, String>] = [
 	\.identity1,
@@ -45,11 +42,12 @@ let codeSamplesToWarmUp: [KeyPath<Samples, String>] = [
 	 \.frutiaAnimateCode, \.frutiaAnimateDontMatchGeometry, \.frutiaAnimateCodeDontHide
 ]
 
+
 let slides: [SlideType] = [
 	.title("Вжух SwiftUI", subtitle: "От основ к продвинутым практикам анимирования"), // 1
 	// --------------------------------------------------------------- //
 	.shakeHand,
-	.identitySample0, // 2
+	.identitySample0, // 3
 	.identitySample1, // 3
 	.rectSome, // 4
 	.rectAny, // 5

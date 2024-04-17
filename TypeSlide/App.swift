@@ -7,6 +7,12 @@ protocol Slidable {
 	var numberOfSubsteps: Int { get }
 }
 
+let noAnim: Set<Int> = [1, 2, 5, 7, 9, 10, 12, 14, 16, 17, 18, 20, 22, 25, 29, 32, 33, 36, 39, 40, 42, 43, 45, 47, 50, 53, 55, 57, 61]
+
+var initialSlize: Int {
+	1// 60
+}
+
 class PresentationManager: ObservableObject {
 	@Published var slides: [SlideType]
 	@Published var currentIndex: Int = initialSlize - 1
@@ -33,7 +39,11 @@ class PresentationManager: ObservableObject {
 	}
 
 	var currentSlide: SlideType {
-		slides[max(0, min(slides.count - 1, currentIndex))]
+		slides[
+			max(0, 
+				min(slides.count - 1, currentIndex)
+			   )
+		]
 	}
 
 	func next() {
@@ -143,7 +153,7 @@ struct Presentation: View {
 			.onReceive(timer) { _ in
 				self.colorIndex = (self.colorIndex + 1) % self.colors.count
 			}
-			.animation(.smooth, value: presentationManager.currentIndex)
+			.animation(noAnim.contains(presentationManager.currentIndex + 1) ? nil : .smooth, value: presentationManager.currentIndex)
 			.background(debugButton)
 			//.transition(.slide)
 //			.animation(.linear(duration: 3), value: presentationManager.currentIndex)
