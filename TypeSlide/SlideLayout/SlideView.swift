@@ -53,6 +53,7 @@ struct SlideView<Content: View>: View {
 
 	// @State // should not be state if manipulated outside of the view
 	var backgroundColor: Color = .white
+	var theEnd: Bool = false
 
 	let timer = Timer.publish(every: 0.03, on: .main, in: .common).autoconnect()
 	@State private var colorIndex = 0
@@ -68,6 +69,11 @@ struct SlideView<Content: View>: View {
 			let farmeSize: (width: CGFloat, height: CGFloat) = slideFrame(geometry.size)
 			ZStack {
 				backgroundColor //debug ? Color.gray : Color.white // Slide background color
+					.mask(
+						Circle().scale(theEnd ? 0.4 : 2)
+					)
+				RadialGradient(gradient: Gradient(colors: [.clear, .black.opacity(0.75)]), center: .center, startRadius: 140, endRadius: 500)
+					.opacity(theEnd ? 0.8 : 0) // Adjust opacity to control the darkness of the corners
 				// Color.clear
 				// colors[colorIndex]
 				content
@@ -96,6 +102,12 @@ struct SlideView<Content: View>: View {
 	func bg(color: Color) -> Self {
 		var copy = self
 		copy.backgroundColor = color
+		return copy
+	}
+
+	func theEnd(_ end: Bool) -> Self {
+		var copy = self
+		copy.theEnd = end
 		return copy
 	}
 }
