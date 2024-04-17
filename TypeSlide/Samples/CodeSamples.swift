@@ -398,7 +398,7 @@ struct MatchedGeometryProperties : OptionSet {
 
 	var frutiaAnimateCode: String { """
 @Namespace var namespace
-@State var selected: Item?
+@State var selectedItm: Item?
 
 var body: some View {
 	ZStack {
@@ -410,7 +410,7 @@ var body: some View {
 				 isSource: true
 			  )
 		}
-		Details(selected)
+		Details(selectedItm)
 			.matchedGeometryEffect(
 			 id: selected.id,
 			 in: namespace,
@@ -419,5 +419,28 @@ var body: some View {
 	}
 }
 """ }
+
+	var frutiaAnimateDontMatchGeometry: String { """
+@Namespace var namespace
+@State var selectedItm: Item?
+var selected: Bool { selectedItm != nil }
+
+var body: some View {
+	ZStack {
+		ForEach(items) {
+			Thumbnail($0)
+		}
+		Details(selected)
+			.opacity(selected ? 1 : 0)
+	}
+}
+""" }
+
+
+	var frutiaAnimateCodeDontHide: String { """
+animationSpeed = 0.1
+disableImageScaling()
+""" }
+
 }
 

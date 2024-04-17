@@ -16,6 +16,18 @@ struct FrutiaShowcase: View {
 	@Namespace var namespace
 	@State private var topmostIngredientID: Ingredient.ID?
 	@State private var selectedIngredientID: Ingredient.ID?
+	var disableGeometryEffect = false
+	var disableSelectAnim = false
+	func disableGeometry() -> Self {
+		var copy = self
+		copy.disableGeometryEffect = true
+		return copy
+	}
+	func disableSelectAnimation() -> Self {
+		var copy = self
+		copy.disableSelectAnim = true
+		return copy
+	}
 
 	var content: some View {
 		VStack(spacing: 0) {
@@ -27,7 +39,7 @@ struct FrutiaShowcase: View {
 						Button(action: { select(ingredient: ingredient) }) {
 							IngredientGraphic(ingredient: measuredIngredient.ingredient, style: presenting ? .cardFront : .thumbnail)
 								.matchedGeometryEffect( // убрать для демки
-									id: measuredIngredient.id,
+									id: disableGeometryEffect ? "nil" : measuredIngredient.id,
 									in: namespace,
 									isSource: !presenting
 								)
@@ -70,9 +82,6 @@ struct FrutiaShowcase: View {
 					.padding(20)
 					.opacity(presenting ? 1 : 0)
 					.zIndex(topmostIngredientID == measuredIngredient.id ? 1 : 0)
-					.accessibilityElement(children: .contain)
-					.accessibility(sortPriority: presenting ? 1 : 0)
-					.accessibility(hidden: !presenting)
 			}
 		}
 	}

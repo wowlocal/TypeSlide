@@ -42,7 +42,7 @@ let codeSamplesToWarmUp: [KeyPath<Samples, String>] = [
 	 \.metalShowcaseLayerEffect, \.metalShowcase,
 	 \.frutiaPreconditionOpened, \.frutiaPreconditionClosed, \.frutiaPreconditionOpenedClosedCombined,
 	 \.matchedGeometryFunc, \.matchedGeometryProperties,
-	 \.frutiaAnimateCode,
+	 \.frutiaAnimateCode, \.frutiaAnimateDontMatchGeometry, \.frutiaAnimateCodeDontHide
 ]
 
 let slides: [SlideType] = [
@@ -130,6 +130,8 @@ let slides: [SlideType] = [
 	.codeMultistep([\.matchedGeometryFunc, \.matchedGeometryProperties]),
 	// --------------------------------------------------------------- //
 	.frutiaShowcase,
+	.frutiaShowcaseNoGeometry,
+	.frutiaShowcaseNoThumbAnimation,
 	// --------------------------------------------------------------- //
 	.hipsterStatement("The End")
 ]
@@ -214,10 +216,24 @@ extension Presentation {
 				.padding(.leading, -700)
 				FrutiaShowcase()
 			}
-//			IngredientGraphic(ingredient: Ingredient.orange, style: .cardBack)
-//				.frame(width: 180, height: 180)
-//				.previewDisplayName("Thumbnail")
-			//
+		case .frutiaShowcaseNoGeometry:
+			ZStack {
+				JustCode(code: [
+					\.frutiaAnimateDontMatchGeometry,
+				])
+				.padding(.leading, -700)
+				FrutiaShowcase()
+					.disableGeometry()
+			}
+		case .frutiaShowcaseNoThumbAnimation:
+			ZStack {
+				JustCode(code: [
+					\.frutiaAnimateCodeDontHide,
+				])
+				.padding(.leading, -700)
+				FrutiaShowcase()
+					.disableSelectAnimation()
+			}
 		}
 	}
 }
@@ -257,5 +273,7 @@ enum SlideType {
 	case frutiaPreconditionOpenedClosedCombined
 	case frutiaOpenCloseText
 	case frutiaShowcase
+	case frutiaShowcaseNoGeometry
+	case frutiaShowcaseNoThumbAnimation
 }
 
