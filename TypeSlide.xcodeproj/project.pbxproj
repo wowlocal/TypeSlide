@@ -10,7 +10,6 @@
 		C60B572A2BC1519C006DD219 /* CodeHighlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60B57292BC1519C006DD219 /* CodeHighlighter.swift */; };
 		C60B572D2BC15E0F006DD219 /* SwiftBasicFormat in Frameworks */ = {isa = PBXBuildFile; productRef = C60B572C2BC15E0F006DD219 /* SwiftBasicFormat */; };
 		C60B572F2BC15E0F006DD219 /* SwiftIDEUtils in Frameworks */ = {isa = PBXBuildFile; productRef = C60B572E2BC15E0F006DD219 /* SwiftIDEUtils */; };
-		C60B57322BC15E3D006DD219 /* Pow in Frameworks */ = {isa = PBXBuildFile; productRef = C60B57312BC15E3D006DD219 /* Pow */; };
 		C60B57342BC15F0E006DD219 /* SwiftParser in Frameworks */ = {isa = PBXBuildFile; productRef = C60B57332BC15F0E006DD219 /* SwiftParser */; };
 		C60B57362BC15F0E006DD219 /* SwiftSyntax in Frameworks */ = {isa = PBXBuildFile; productRef = C60B57352BC15F0E006DD219 /* SwiftSyntax */; };
 		C60B57392BC160B8006DD219 /* HighlightSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C60B57382BC160B8006DD219 /* HighlightSwift */; };
@@ -110,7 +109,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C60B57322BC15E3D006DD219 /* Pow in Frameworks */,
 				C60B57342BC15F0E006DD219 /* SwiftParser in Frameworks */,
 				C60B57362BC15F0E006DD219 /* SwiftSyntax in Frameworks */,
 				C60B57392BC160B8006DD219 /* HighlightSwift in Frameworks */,
@@ -262,7 +260,6 @@
 			packageProductDependencies = (
 				C60B572C2BC15E0F006DD219 /* SwiftBasicFormat */,
 				C60B572E2BC15E0F006DD219 /* SwiftIDEUtils */,
-				C60B57312BC15E3D006DD219 /* Pow */,
 				C60B57332BC15F0E006DD219 /* SwiftParser */,
 				C60B57352BC15F0E006DD219 /* SwiftSyntax */,
 				C60B57382BC160B8006DD219 /* HighlightSwift */,
@@ -341,7 +338,6 @@
 			mainGroup = C63FB3A72BB87B62002C22D6;
 			packageReferences = (
 				C60B572B2BC15E0F006DD219 /* XCRemoteSwiftPackageReference "swift-syntax" */,
-				C60B57302BC15E3D006DD219 /* XCRemoteSwiftPackageReference "Pow" */,
 				C60B57372BC160B8006DD219 /* XCRemoteSwiftPackageReference "HighlightSwift" */,
 			);
 			productRefGroup = C63FB3B12BB87B62002C22D6 /* Products */;
@@ -750,14 +746,6 @@
 				minimumVersion = 510.0.1;
 			};
 		};
-		C60B57302BC15E3D006DD219 /* XCRemoteSwiftPackageReference "Pow" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/EmergeTools/Pow";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.3;
-			};
-		};
 		C60B57372BC160B8006DD219 /* XCRemoteSwiftPackageReference "HighlightSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/appstefan/HighlightSwift";
@@ -778,11 +766,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C60B572B2BC15E0F006DD219 /* XCRemoteSwiftPackageReference "swift-syntax" */;
 			productName = SwiftIDEUtils;
-		};
-		C60B57312BC15E3D006DD219 /* Pow */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C60B57302BC15E3D006DD219 /* XCRemoteSwiftPackageReference "Pow" */;
-			productName = Pow;
 		};
 		C60B57332BC15F0E006DD219 /* SwiftParser */ = {
 			isa = XCSwiftPackageProductDependency;

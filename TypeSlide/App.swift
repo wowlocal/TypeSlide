@@ -1,6 +1,6 @@
 import SwiftUI
 
-@testable import HighlightSwift
+import HighlightSwift
 
 protocol Slidable {
 	var substep: Int { get set }
@@ -135,7 +135,6 @@ struct Presentation: View {
 		.keyboardShortcut(KeyEquivalent("d"), modifiers: [.command])
 	}
 
-	@Environment(\.highlight) var highlight
 	@State var codeSamples = Samples()
 
 	var body: some View {
@@ -179,6 +178,7 @@ struct Presentation: View {
 			Task.detached {
 				// warum up cache
 				var idx = 0
+				let highlight = Highlight()
 				for kp in codeSamplesToWarmUp {
 					idx += 1
 					let result = try await highlight.attributed(

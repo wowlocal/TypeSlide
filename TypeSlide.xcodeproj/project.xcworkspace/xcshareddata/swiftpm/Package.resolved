@@ -1,5 +1,5 @@
 {
-  "originHash" : "936c59a78648e15db8a9dfd1b1cb80cd97c5e937881081761aa46ec8c58112cb",
+  "originHash" : "3cef934cc63c309cf863bd0c8139d90207528de071f198cfbf75ab74326a80a9",
   "pins" : [
     {
       "identity" : "highlightswift",
@@ -8,15 +8,6 @@
       "state" : {
         "revision" : "1ee708afe9473828f36d0202722c9cc065d74110",
         "version" : "1.0.7"
-      }
-    },
-    {
-      "identity" : "pow",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/EmergeTools/Pow",
-      "state" : {
-        "revision" : "cc014eba4b65f689cadc281ad925de5607f2adc9",
-        "version" : "1.0.3"
       }
     },
     {
