@@ -367,6 +367,17 @@ var body: some View {
 }
 """ }
 
+	var frutiaPreconditionOpenedClosedCombined: String { """
+@State var opened: Bool
+
+var body: some View {
+	Image()
+		.frame(width: opened ? 500 : 200)
+		.aspectRatio(opened ? 0.75 : 1)
+		.scaleEffect(opened ? 1 : 0.4)
+}
+""" }
+
 	// --------------------------------------------------------------- //
 
 	var frutiaAnimateCode0: String { """

@@ -40,7 +40,7 @@ let codeSamplesToWarmUp: [KeyPath<Samples, String>] = [
 	 \.keyframe0, \.keyframe1, \.keyframe2, \.keyframeAll,
 	 \.animatableText0, \.animatableText1,
 	 \.metalShowcaseLayerEffect, \.metalShowcase,
-	 \.frutiaPreconditionOpened, \.frutiaPreconditionClosed,
+	 \.frutiaPreconditionOpened, \.frutiaPreconditionClosed, \.frutiaPreconditionOpenedClosedCombined,
 	 \.frutiaAnimateCode0,
 ]
 
@@ -124,6 +124,7 @@ let slides: [SlideType] = [
 	.title("Комбинируя всё", subtitle: "кастомные переходы между экранами"),
 	.frutiaPreconditionClosed,
 	.frutiaPreconditionOpened,
+	.frutiaPreconditionOpenedClosedCombined,
 	.frutiaShowcase,
 	.hipsterStatement("The End")
 ]
@@ -196,6 +197,8 @@ extension Presentation {
 			frutiaPreconditionOpened
 		case .frutiaPreconditionClosed:
 			frutiaPreconditionClosed
+		case .frutiaPreconditionOpenedClosedCombined:
+			JustCode(code: \.frutiaPreconditionOpenedClosedCombined)
 		case .frutiaShowcase:
 			ZStack {
 				JustCode(code: [
@@ -242,8 +245,9 @@ enum SlideType {
 	case progressIndicatorTextShowcase
 	case typewriterTextShowcase
 	case metalShowcase
-	case frutiaShowcase
 	case frutiaPreconditionClosed
 	case frutiaPreconditionOpened
+	case frutiaPreconditionOpenedClosedCombined
+	case frutiaShowcase
 }
 
