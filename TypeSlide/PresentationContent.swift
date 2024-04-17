@@ -8,7 +8,7 @@
 import Foundation
 
 // not index
-let initialSlize = 53
+let initialSlize = 60
 
 let metalCodeIdx = 33
 let codeSamplesToWarmUp: [KeyPath<Samples, String>] = [
@@ -232,7 +232,7 @@ extension Presentation {
 				])
 				.padding(.leading, -700)
 				FrutiaShowcase()
-					.disableSelectAnimation()
+					.slowAnimation()
 			}
 		}
 	}

@@ -17,15 +17,15 @@ struct FrutiaShowcase: View {
 	@State private var topmostIngredientID: Ingredient.ID?
 	@State private var selectedIngredientID: Ingredient.ID?
 	var disableGeometryEffect = false
-	var disableSelectAnim = false
+	var slowAnim = false
 	func disableGeometry() -> Self {
 		var copy = self
 		copy.disableGeometryEffect = true
 		return copy
 	}
-	func disableSelectAnimation() -> Self {
+	func slowAnimation() -> Self {
 		var copy = self
-		copy.disableSelectAnim = true
+		copy.slowAnim = true
 		return copy
 	}
 
@@ -96,6 +96,12 @@ struct FrutiaShowcase: View {
 
 	func select(ingredient: Ingredient) {
 		topmostIngredientID = ingredient.id
+		if slowAnim {
+			withAnimation(.openCard.speed(0.1)) {
+				selectedIngredientID = ingredient.id
+			}
+			return
+		}
 		withAnimation(.openCard) {
 			selectedIngredientID = ingredient.id
 		}
