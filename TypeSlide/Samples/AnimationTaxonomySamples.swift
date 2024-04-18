@@ -111,6 +111,10 @@ struct SpringExample: View {
 			.opacity(0)
 			.keyboardShortcut(KeyEquivalent("a"), modifiers: [.control])
 		)
+		// правит анимацию появления при переключении слайдов
+		// без composing group появление пружины происходит чуть раньше
+		// из-за чего она просвечивает через грузик
+		.compositingGroup()
 	}
 }
 
